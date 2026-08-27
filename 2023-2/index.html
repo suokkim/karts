@@ -59,13 +59,10 @@ html.locked{overflow:hidden}          /* 뒤 페이지가 같이 스크롤되던
 /* 손을 뗐을 때만 애니메이션 — 끄는 동안은 손가락을 그대로 따라가야 한다 */
 #stage.anim img,#stage.anim video{transition:transform .34s cubic-bezier(.22,1,.36,1),
   opacity .34s cubic-bezier(.22,1,.36,1)}
-/* 위치 표시: 장수가 적으면 점, 많으면 막대 + 숫자 */
+/* 위치 표시: 장수와 무관하게 항상 막대 + 숫자 (점은 쓰지 않는다) */
 #ind{position:absolute;left:0;right:0;bottom:max(1rem,env(safe-area-inset-bottom));
   display:flex;flex-direction:column;align-items:center;gap:.45rem;
   pointer-events:none;color:#fff}
-#dots{display:flex;gap:6px}
-#dots i{width:6px;height:6px;border-radius:50%;background:#fff;opacity:.3}
-#dots i.on{opacity:.95}
 #bar{width:min(200px,44vw);height:2px;border-radius:2px;background:rgba(255,255,255,.25)}
 #bar b{display:block;height:100%;border-radius:2px;background:#fff;opacity:.9}
 #gname{font-size:.8rem;letter-spacing:.02em;opacity:.85;max-width:80vw;overflow:hidden;
@@ -77,14 +74,13 @@ footer{border-top:1px solid var(--line);padding:2rem 1.5rem;color:var(--muted);f
 
 <div id="lb" role="dialog" aria-modal="true" aria-label="확대 보기">
   <div id="stage"></div>
-  <div id="ind"><div id="gname"></div><div id="dots"></div>
+  <div id="ind"><div id="gname"></div>
     <div id="bar"><b></b></div><div id="num"></div></div>
 </div>
 <script>
 const lb=document.getElementById('lb'), stage=document.getElementById('stage');
-const dots=document.getElementById('dots'), bar=document.getElementById('bar'),
-      barFill=bar.firstElementChild, num=document.getElementById('num'),
-      gname=document.getElementById('gname');
+const bar=document.getElementById('bar'), barFill=bar.firstElementChild,
+      num=document.getElementById('num'), gname=document.getElementById('gname');
 
 // 화면에 그려진 순서 그대로. 한 장씩만 들고 있으므로 인덱스가 어긋날 수 없다 —
 // 예전에 3장 페이저로 만들었다가 '누른 것과 다른 그림'이 열려서 이 구조로 왔다.
@@ -96,7 +92,6 @@ const GROUPS=JSON.parse(document.getElementById('groups')?.textContent||'[]');
 // '3 / 127' 처럼 위치 표시가 무의미해지고, 옆 사람 작업으로 새 나간다.
 const gFirst=[], gLast=[];
 items.forEach((it,i)=>{ if(gFirst[it.g]===undefined) gFirst[it.g]=i; gLast[it.g]=i; });
-const DOT_MAX=15;                      // 이보다 많으면 점 대신 막대+숫자
 let idx=0, busy=false;
 
 function render(i){
@@ -114,15 +109,7 @@ function paintInd(){
   const [a,,len]=span(), pos=idx-a+1;
   gname.textContent=GROUPS[items[idx].g]||'';
   num.textContent=pos+' / '+len;
-  if(len<=DOT_MAX){
-    bar.style.display='none';
-    dots.innerHTML=Array.from({length:len},(_,k)=>
-      '<i'+(k===pos-1?' class="on"':'')+'></i>').join('');
-  } else {
-    dots.innerHTML='';
-    bar.style.display='';
-    barFill.style.width=(pos/len*100).toFixed(2)+'%';
-  }
+  barFill.style.width=(pos/len*100).toFixed(2)+'%';
 }
 // 이웃을 미리 받아둔다 — 넘길 때 흰 화면이 안 보이게
 function preload(){
