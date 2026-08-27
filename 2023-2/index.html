@@ -167,12 +167,14 @@ function spring(){                        // 문턱을 못 넘었을 때 제자�
   m.style.transform=''; m.style.opacity='1';
 }
 
-// 손가락을 그대로 따라가고, 뗄 때 넘김/복귀를 정한다
-const THRESH=()=>Math.min(110, innerHeight*.15);
-let y0=null, dy=0, drag=false;
+// 손가락을 그대로 따라가고, 뗄 때 넘김/복귀를 정한다.
+// 거리(짧게 잡음) 또는 속도 — 둘 중 하나만 넘어도 넘긴다. 툭 튕기기만 해도 넘어가게.
+const THRESH=()=>Math.min(64, innerHeight*.08);
+const FLICK=.32;                       // px/ms
+let y0=null, t0=0, dy=0, drag=false;
 lb.addEventListener('touchstart',e=>{
   if(busy || e.touches.length>1){ y0=null; return; }
-  y0=e.touches[0].clientY; dy=0; drag=false;
+  y0=e.touches[0].clientY; t0=Date.now(); dy=0; drag=false;
   stage.classList.remove('anim');
 },{passive:true});
 lb.addEventListener('touchmove',e=>{
@@ -183,13 +185,14 @@ lb.addEventListener('touchmove',e=>{
   e.preventDefault();
   const m=stage.firstElementChild; if(!m) return;
   m.style.transform='translateY('+dy+'px)';
-  m.style.opacity=String(Math.max(.3, 1-Math.abs(dy)/innerHeight));
+  // 문턱이 짧아진 만큼 반응도 빨리 보이게 — 조금만 끌어도 넘어갈 낌새가 난다
+  m.style.opacity=String(Math.max(.35, 1-Math.abs(dy)/(innerHeight*.4)));
 },{passive:false});
 lb.addEventListener('touchend',()=>{
   if(y0===null) return;
-  const d=dy, moved=drag; y0=null;
+  const d=dy, moved=drag, v=Math.abs(d)/Math.max(1,Date.now()-t0); y0=null;
   if(!moved) return;                       // 탭은 click 이 처리
-  if(Math.abs(d)>THRESH()) go(d<0?1:-1); else spring();
+  if(Math.abs(d)>THRESH() || v>FLICK) go(d<0?1:-1); else spring();
 },{passive:true});
 lb.addEventListener('touchcancel',()=>{ if(drag) spring(); y0=null; },{passive:true});
 
