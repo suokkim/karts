@@ -9,12 +9,12 @@
 body{margin:0;background:var(--bg);color:var(--fg);
   font:16px/1.6 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif}
 a{color:inherit;text-decoration:none}
-header{padding:clamp(3rem,8vw,6rem) 1.5rem 2.5rem;border-bottom:1px solid var(--line)}
-.wrap{max-width:1180px;margin:0 auto}
+header{padding:clamp(2rem,5vw,3.5rem) 1.5rem 1.5rem;border-bottom:1px solid var(--line)}
+.wrap{max-width:1400px;margin:0 auto}
 h1{margin:0;font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.02em}
 .sub{color:var(--muted);margin-top:.5rem}
-main{padding:2.5rem 1.5rem 6rem}
-.years{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+main{padding:1.75rem 1.5rem 5rem}
+.years{display:grid;gap:.9rem;grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;
   display:block;transition:transform .15s ease,border-color .15s ease}
 .card:hover{transform:translateY(-2px);border-color:var(--accent)}
@@ -22,10 +22,12 @@ main{padding:2.5rem 1.5rem 6rem}
 .card .meta{padding:.75rem .9rem}
 .card .meta b{font-size:1.15rem;letter-spacing:-.01em}
 .card .meta span{display:block;color:var(--muted);font-size:.85rem;margin-top:.15rem}
-h2{margin:3rem 0 .25rem;font-size:1.25rem;letter-spacing:-.01em}
-h2:first-of-type{margin-top:.5rem}
+h2{margin:2rem 0 .2rem;font-size:1.1rem;letter-spacing:-.01em}
+h2:first-of-type{margin-top:.25rem}
 .path{color:var(--muted);font-size:.85rem;margin-bottom:.9rem}
-.grid{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+/* 한 사람 작업을 한 그룹으로 묶으면서 한 그룹에 100장 넘는 경우가 생겼다.
+   타일을 작게 잡아 한 화면에 많이 들어오게 한다 (자세히 볼 땐 라이트박스). */
+.grid{display:grid;gap:.5rem;grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
 .grid img,.grid video{width:100%;height:100%;object-fit:cover;display:block;
   aspect-ratio:1;background:var(--line);border-radius:8px;cursor:zoom-in}
 .tile{position:relative;display:block;aspect-ratio:1}
