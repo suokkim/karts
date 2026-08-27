@@ -15,13 +15,15 @@ h1{margin:0;font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.02em}
 .sub{color:var(--muted);margin-top:.5rem}
 main{padding:1.75rem 1.5rem 5rem}
 .years{display:grid;gap:.9rem;grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;
-  display:block;transition:transform .15s ease,border-color .15s ease}
-.card:hover{transform:translateY(-2px);border-color:var(--accent)}
+/* 학기 카드: 이름을 아래 상자에 따로 두지 않고 썸네일 위에 얹는다 */
+.card{position:relative;border-radius:12px;overflow:hidden;display:block;
+  transition:transform .15s ease}
+.card:hover{transform:translateY(-2px)}
 .card .thumb{aspect-ratio:4/3;background:var(--line) center/cover no-repeat;display:block}
-.card .meta{padding:.75rem .9rem}
+.card .meta{position:absolute;inset:auto 0 0 0;padding:1.6rem .8rem .6rem;color:#fff;
+  background:linear-gradient(transparent,rgba(0,0,0,.72))}
 .card .meta b{font-size:1.15rem;letter-spacing:-.01em}
-.card .meta span{display:block;color:var(--muted);font-size:.85rem;margin-top:.15rem}
+.card .meta span{display:block;font-size:.8rem;opacity:.8;margin-top:.1rem}
 h2{margin:2rem 0 .2rem;font-size:1.1rem;letter-spacing:-.01em}
 h2:first-of-type{margin-top:.25rem}
 .path{color:var(--muted);font-size:.85rem;margin-bottom:.9rem}
@@ -49,21 +51,19 @@ dialog video{max-width:96vw;max-height:92vh;display:block;margin:auto;border-rad
 /* 세로로 긴 문서·포스터는 높이로 맞추면 글씨가 안 보인다 → 폭에 맞추고 세로 스크롤 */
 dialog img{max-width:96vw;display:block;margin:auto;border-radius:6px}
 dialog img.fitheight{max-height:92vh;width:auto}
-dialog .cap{color:#ddd;text-align:center;font-size:.85rem;padding:.5rem}
 footer{border-top:1px solid var(--line);padding:2rem 1.5rem;color:var(--muted);font-size:.85rem}
 </style></head><body><header><div class="wrap"><a class="back" href="../index.html">← 전체 학기</a><h1>2021-1</h1><div class="sub">한국예술종합학교 연극원 무대미술과 · 멀티미디어</div></div></header><main><div class="wrap"><h2>이미지</h2><div class="path">2021-1</div><div class="grid"><img loading="lazy" src="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80/image_%2810%29.jpg" alt="image_(10)" data-full="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80/image_%2810%29.jpg" data-name="image_(10)"><img loading="lazy" src="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80/image_%285%29.jpg" alt="image_(5)" data-full="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80/image_%285%29.jpg" data-name="image_(5)"><img loading="lazy" src="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80%206a3e-81ef/rear_window_10.jpg" alt="rear_window_10" data-full="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80%206a3e-81ef/rear_window_10.jpg" data-name="rear_window_10"><img loading="lazy" src="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80%206a3e-81ef/rear_window_11.jpg" alt="rear_window_11" data-full="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80%206a3e-81ef/rear_window_11.jpg" data-name="rear_window_11"><img loading="lazy" src="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80%207a75-8803/Rear_window_night.jpg" alt="Rear_window_night" data-full="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80%207a75-8803/Rear_window_night.jpg" data-name="Rear_window_night"><img loading="lazy" src="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80%20c52c-c2ca/Rear_window_day.jpg" alt="Rear_window_day" data-full="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80%20c52c-c2ca/Rear_window_day.jpg" data-name="Rear_window_day"><img loading="lazy" src="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80%20c52c-c2ca/image_%2811%29.jpg" alt="image_(11)" data-full="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80%20c52c-c2ca/image_%2811%29.jpg" data-name="image_(11)"><img loading="lazy" src="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80%20c52c-c2ca/image_%2812%29.jpg" alt="image_(12)" data-full="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80%20c52c-c2ca/image_%2812%29.jpg" data-name="image_(12)"><img loading="lazy" src="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80%20c52c-c2ca/image_%2813%29.jpg" alt="image_(13)" data-full="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80%20c52c-c2ca/image_%2813%29.jpg" data-name="image_(13)"><img loading="lazy" src="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80%20c52c-c2ca/image_%2814%29.jpg" alt="image_(14)" data-full="2021-1/%EC%9D%B4%EB%AF%B8%EC%A7%80%20c52c-c2ca/image_%2814%29.jpg" data-name="image_(14)"></div><h2>김민정</h2><div class="grid"><img loading="lazy" src="2021-1/%EA%B9%80%EB%AF%BC%EC%A0%95/image.jpg" alt="image" data-full="2021-1/%EA%B9%80%EB%AF%BC%EC%A0%95/image.jpg" data-name="image"><img loading="lazy" src="2021-1/%EA%B9%80%EB%AF%BC%EC%A0%95/image_%281%29.jpg" alt="image_(1)" data-full="2021-1/%EA%B9%80%EB%AF%BC%EC%A0%95/image_%281%29.jpg" data-name="image_(1)"><img loading="lazy" src="2021-1/%EA%B9%80%EB%AF%BC%EC%A0%95/image_%282%29.jpg" alt="image_(2)" data-full="2021-1/%EA%B9%80%EB%AF%BC%EC%A0%95/image_%282%29.jpg" data-name="image_(2)"><img loading="lazy" src="2021-1/%EA%B9%80%EB%AF%BC%EC%A0%95/image_%283%29.jpg" alt="image_(3)" data-full="2021-1/%EA%B9%80%EB%AF%BC%EC%A0%95/image_%283%29.jpg" data-name="image_(3)"><img loading="lazy" src="2021-1/%EA%B9%80%EB%AF%BC%EC%A0%95/image_%287%29.jpg" alt="image_(7)" data-full="2021-1/%EA%B9%80%EB%AF%BC%EC%A0%95/image_%287%29.jpg" data-name="image_(7)"></div><h2>안연수</h2><div class="grid"><img loading="lazy" src="2021-1/%EC%95%88%EC%97%B0%EC%88%98/Untitled.jpg" alt="Untitled" data-full="2021-1/%EC%95%88%EC%97%B0%EC%88%98/Untitled.jpg" data-name="Untitled"><img loading="lazy" src="2021-1/%EC%95%88%EC%97%B0%EC%88%98/image.jpg" alt="image" data-full="2021-1/%EC%95%88%EC%97%B0%EC%88%98/image.jpg" data-name="image"><img loading="lazy" src="2021-1/%EC%95%88%EC%97%B0%EC%88%98/image_%283%29.jpg" alt="image_(3)" data-full="2021-1/%EC%95%88%EC%97%B0%EC%88%98/image_%283%29.jpg" data-name="image_(3)"><img loading="lazy" src="2021-1/%EC%95%88%EC%97%B0%EC%88%98/image_%284%29.jpg" alt="image_(4)" data-full="2021-1/%EC%95%88%EC%97%B0%EC%88%98/image_%284%29.jpg" data-name="image_(4)"><img loading="lazy" src="2021-1/%EC%95%88%EC%97%B0%EC%88%98/image_%285%29.jpg" alt="image_(5)" data-full="2021-1/%EC%95%88%EC%97%B0%EC%88%98/image_%285%29.jpg" data-name="image_(5)"></div><h2>이태양</h2><div class="grid"><img loading="lazy" src="2021-1/%EC%9D%B4%ED%83%9C%EC%96%91/image_%288%29.jpg" alt="image_(8)" data-full="2021-1/%EC%9D%B4%ED%83%9C%EC%96%91/image_%288%29.jpg" data-name="image_(8)"><img loading="lazy" src="2021-1/%EC%9D%B4%ED%83%9C%EC%96%91%20bd0e-3146/image_%284%29.jpg" alt="image_(4)" data-full="2021-1/%EC%9D%B4%ED%83%9C%EC%96%91%20bd0e-3146/image_%284%29.jpg" data-name="image_(4)"><img loading="lazy" src="2021-1/%EC%9D%B4%ED%83%9C%EC%96%91%20e9fa-4598/image_%286%29.jpg" alt="image_(6)" data-full="2021-1/%EC%9D%B4%ED%83%9C%EC%96%91%20e9fa-4598/image_%286%29.jpg" data-name="image_(6)"></div></div></main>
 <footer><div class="wrap">노션 아카이브에서 생성 · 이미지 JPEG 장변 1600px / 영상 H.264 장변 1280px</div></footer>
 
-<dialog id="lb"><div id="lbbody"></div><div class="cap" id="lbcap"></div></dialog>
+<dialog id="lb"><div id="lbbody"></div></dialog>
 <script>
-const lb=document.getElementById('lb'),body=document.getElementById('lbbody'),cap=document.getElementById('lbcap');
+const lb=document.getElementById('lb'),body=document.getElementById('lbbody');
 document.querySelectorAll('[data-full]').forEach(el=>el.addEventListener('click',()=>{
   const src=el.dataset.full, isVid=el.dataset.kind==='video';
   // 비율 2:1 이하 이미지는 화면 높이에 맞추고, 더 긴 것은 폭에 맞춰 스크롤하게 둔다
   body.innerHTML = isVid
     ? '<video controls autoplay playsinline src="'+src+'"></video>'
     : '<img class="'+(el.dataset.tall==='1'?'':'fitheight')+'" src="'+src+'" alt="">';
-  cap.textContent = el.dataset.name || '';
   lb.showModal();
 }));
 lb.addEventListener('click',e=>{if(e.target===lb) lb.close()});
