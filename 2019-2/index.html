@@ -56,6 +56,8 @@ html.locked{overflow:hidden}          /* 뒤 페이지가 같이 스크롤되던
 #stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 #stage img,#stage video{max-width:100vw;max-height:100dvh;width:auto;height:auto;
   display:block;will-change:transform;-webkit-user-drag:none}
+#stage img{cursor:zoom-in}
+#stage.zoomed img{cursor:zoom-out}
 /* 손을 뗐을 때만 애니메이션 — 끄는 동안은 손가락을 그대로 따라가야 한다 */
 #stage.anim img,#stage.anim video{transition:transform .34s cubic-bezier(.22,1,.36,1),
   opacity .34s cubic-bezier(.22,1,.36,1)}
@@ -99,7 +101,25 @@ function render(i){
   stage.innerHTML = it.vid
     ? '<video controls playsinline preload="metadata" src="'+it.src+'"></video>'
     : '<img src="'+it.src+'" alt="">';
+  zoom=1; zx=zy=0;                      // 장이 바뀌면 배율은 항상 원래대로
 }
+
+// ── 확대 ────────────────────────────────────────────────────────────────
+// 탭하면 ZOOM_TAP 배, 다시 탭하면 원래대로. 핀치는 1~5배.
+// 확대 중에는 한 손가락이 장 넘김이 아니라 패닝이 된다.
+const ZOOM_TAP=2.5, ZOOM_MAX=5;
+let zoom=1, zx=0, zy=0, pinch=null, panX0=0, panY0=0, justPinched=false;
+function applyZoom(animate){
+  const m=stage.firstElementChild; if(!m) return;
+  stage.classList.remove('anim');       // 배율은 인라인 transition 으로 따로 관리
+  m.style.transition=animate?'transform .25s cubic-bezier(.22,1,.36,1)':'none';
+  m.style.transform=zoom>1?'translate('+zx+'px,'+zy+'px) scale('+zoom+')':'';
+  m.style.opacity='1';
+  stage.classList.toggle('zoomed', zoom>1);
+}
+function resetZoom(animate){ zoom=1; zx=zy=0; applyZoom(animate); }
+function toggleZoom(){ zoom=zoom>1?1:ZOOM_TAP; zx=zy=0; applyZoom(true); }
+const dist=t=>Math.hypot(t[0].clientX-t[1].clientX, t[0].clientY-t[1].clientY);
 // 지금 장이 속한 그룹의 [처음, 끝, 장수]
 function span(){ const g=items[idx].g; return [gFirst[g], gLast[g], gLast[g]-gFirst[g]+1]; }
 // 그룹 안에서만 순환한다
@@ -132,6 +152,7 @@ function openAt(i){
 function close(){
   const m=stage.firstElementChild;
   if(m && m.tagName==='VIDEO') m.pause();
+  zoom=1; zx=zy=0; stage.classList.remove('zoomed');
   lb.classList.remove('open'); stage.innerHTML=''; unlock();
 }
 document.querySelectorAll('[data-full]').forEach((el,i)=>
@@ -141,6 +162,7 @@ document.querySelectorAll('[data-full]').forEach((el,i)=>
 // 이미지는 디코드를 기다렸다 바꾸므로 전환 중에 빈 칸이 보이지 않는다.
 async function go(dir){
   if(busy) return;
+  if(zoom>1) resetZoom(false);
   const next=step(dir);
   if(next===idx){ spring(); return; }      // 그룹에 한 장뿐
   busy=true;
@@ -172,13 +194,33 @@ function spring(){                        // 문턱을 못 넘었을 때 제자�
 const THRESH=()=>Math.min(64, innerHeight*.08);
 const FLICK=.32;                       // px/ms
 let y0=null, t0=0, dy=0, drag=false;
+let px0=0;
 lb.addEventListener('touchstart',e=>{
-  if(busy || e.touches.length>1){ y0=null; return; }
-  y0=e.touches[0].clientY; t0=Date.now(); dy=0; drag=false;
+  if(e.touches.length>=2){                 // 두 손가락 = 핀치, 넘김 판정은 버린다
+    pinch={d0:dist(e.touches), z0:zoom,
+           x0:(e.touches[0].clientX+e.touches[1].clientX)/2,
+           y0:(e.touches[0].clientY+e.touches[1].clientY)/2, zx0:zx, zy0:zy};
+    y0=null; drag=false; return;
+  }
+  if(busy){ y0=null; return; }
+  y0=e.touches[0].clientY; px0=e.touches[0].clientX; t0=Date.now(); dy=0; drag=false;
+  panX0=zx; panY0=zy;
   stage.classList.remove('anim');
 },{passive:true});
 lb.addEventListener('touchmove',e=>{
+  if(pinch && e.touches.length>=2){
+    e.preventDefault();
+    zoom=Math.min(ZOOM_MAX, Math.max(1, pinch.z0*dist(e.touches)/pinch.d0));
+    zx=pinch.zx0+(e.touches[0].clientX+e.touches[1].clientX)/2-pinch.x0;
+    zy=pinch.zy0+(e.touches[0].clientY+e.touches[1].clientY)/2-pinch.y0;
+    applyZoom(false); return;
+  }
   if(y0===null) return;
+  if(zoom>1){                              // 확대 중 한 손가락 = 패닝
+    e.preventDefault();
+    zx=panX0+e.touches[0].clientX-px0; zy=panY0+e.touches[0].clientY-y0;
+    drag=true; applyZoom(false); return;
+  }
   dy=e.touches[0].clientY-y0;
   if(!drag && Math.abs(dy)>6) drag=true;   // 탭과 섞이지 않게 6px 문턱
   if(!drag) return;
@@ -188,18 +230,30 @@ lb.addEventListener('touchmove',e=>{
   // 문턱이 짧아진 만큼 반응도 빨리 보이게 — 조금만 끌어도 넘어갈 낌새가 난다
   m.style.opacity=String(Math.max(.35, 1-Math.abs(dy)/(innerHeight*.4)));
 },{passive:false});
-lb.addEventListener('touchend',()=>{
+lb.addEventListener('touchend',e=>{
+  if(pinch){
+    justPinched=true;                      // 손 떼며 생기는 click 이 닫지 않게
+    if(zoom<=1.05) resetZoom(true);
+    pinch=null;
+    if(e.touches.length===1){               // 남은 손가락은 패닝으로 이어받는다
+      y0=e.touches[0].clientY; px0=e.touches[0].clientX; panX0=zx; panY0=zy;
+    }
+    return;
+  }
   if(y0===null) return;
+  if(zoom>1){ y0=null; return; }            // 패닝 종료 — 넘김 아님
   const d=dy, moved=drag, v=Math.abs(d)/Math.max(1,Date.now()-t0); y0=null;
   if(!moved) return;                       // 탭은 click 이 처리
   if(Math.abs(d)>THRESH() || v>FLICK) go(d<0?1:-1); else spring();
 },{passive:true});
-lb.addEventListener('touchcancel',()=>{ if(drag) spring(); y0=null; },{passive:true});
+lb.addEventListener('touchcancel',()=>{ pinch=null; if(drag && zoom<=1) spring(); y0=null; },
+  {passive:true});
 
-// 탭 = 닫기 (영상 컨트롤과 드래그 직후는 제외)
+// 이미지 탭 = 확대/축소, 바깥 탭 = 닫기 (영상 컨트롤과 드래그·핀치 직후는 제외)
 lb.addEventListener('click',e=>{
-  if(drag){ drag=false; return; }
+  if(drag || justPinched){ drag=justPinched=false; return; }
   if(e.target.tagName==='VIDEO') return;
+  if(e.target.tagName==='IMG'){ toggleZoom(); return; }
   close();
 });
 
@@ -207,6 +261,12 @@ lb.addEventListener('click',e=>{
 let wheelLock=false, wheelT=0;
 lb.addEventListener('wheel',e=>{
   e.preventDefault();
+  if(e.ctrlKey){                            // 트랙패드 핀치 = 페이지 줌 대신 이미지 줌
+    zoom=Math.min(ZOOM_MAX, Math.max(1, zoom-e.deltaY*.02));
+    if(zoom===1) zx=zy=0;
+    applyZoom(false); return;
+  }
+  if(zoom>1) return;                        // 확대 중엔 휠로 장을 넘기지 않는다
   clearTimeout(wheelT); wheelT=setTimeout(()=>{ wheelLock=false; },250);
   if(wheelLock || Math.abs(e.deltaY)<25) return;
   wheelLock=true; go(e.deltaY>0?1:-1);
