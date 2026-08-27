@@ -2,108 +2,297 @@
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>2022-1 · 스튜디오F 아카이브</title>
+<meta name="description" content="한국예술종합학교 연극원 무대미술과 · 멀티미디어">
 <style>
-:root{--bg:#faf9f7;--fg:#1a1a19;--muted:#6b6a66;--line:#e2e0db;--card:#fff;--accent:#2f6f4f}
-@media(prefers-color-scheme:dark){:root{--bg:#131311;--fg:#eceae5;--muted:#9a978f;--line:#2b2a27;--card:#1b1b19;--accent:#7fc0a0}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);
-  font:16px/1.6 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif}
-a{color:inherit;text-decoration:none}
-header{padding:clamp(2rem,5vw,3.5rem) 1.5rem 1.5rem;border-bottom:1px solid var(--line)}
-.wrap{max-width:1400px;margin:0 auto}
-h1{margin:0;font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.02em}
-.sub{color:var(--muted);margin-top:.5rem}
-main{padding:1.75rem 1.5rem 5rem}
-.years{display:grid;gap:.9rem;grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
-/* 학기 카드: 이름을 아래 상자에 따로 두지 않고 썸네일 위에 얹는다 */
-.card{position:relative;border-radius:12px;overflow:hidden;display:block;
-  transition:transform .15s ease}
-.card:hover{transform:translateY(-2px)}
-.card .thumb{aspect-ratio:4/3;background:var(--line) center/cover no-repeat;display:block}
-.card .meta{position:absolute;inset:auto 0 0 0;padding:1.6rem .8rem .6rem;color:#fff;
-  background:linear-gradient(transparent,rgba(0,0,0,.72))}
-.card .meta b{font-size:1.15rem;letter-spacing:-.01em}
-.card .meta span{display:block;font-size:.8rem;opacity:.8;margin-top:.1rem}
-h2{margin:2rem 0 .2rem;font-size:1.1rem;letter-spacing:-.01em}
-h2:first-of-type{margin-top:.25rem}
-.path{color:var(--muted);font-size:.85rem;margin-bottom:.9rem}
-/* 한 사람 작업을 한 그룹으로 묶으면서 한 그룹에 100장 넘는 경우가 생겼다.
-   타일을 작게 잡아 한 화면에 많이 들어오게 한다 (자세히 볼 땐 라이트박스). */
-.grid{display:grid;gap:.5rem;grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
-.grid img,.grid video{width:100%;height:100%;object-fit:cover;display:block;
-  aspect-ratio:1;background:var(--line);border-radius:8px;cursor:zoom-in}
-.tile{position:relative;display:block;aspect-ratio:1}
-.tile video{cursor:pointer}
-.badge{position:absolute;left:.45rem;bottom:.45rem;pointer-events:none;
-  display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .5rem;border-radius:999px;
-  background:rgba(0,0,0,.66);color:#fff;font-size:.72rem;line-height:1;
-  backdrop-filter:blur(2px)}
-.tile::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:8px;
-  background:radial-gradient(circle at 50% 50%,rgba(0,0,0,.28) 0 34px,transparent 34px)}
-.tile .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  color:#fff;font-size:1.6rem;pointer-events:none;text-shadow:0 1px 6px rgba(0,0,0,.5)}
-.doc{display:flex;align-items:center;gap:.5rem;padding:.9rem;border:1px dashed var(--line);border-radius:8px}
-.back{display:inline-block;margin-bottom:1rem;color:var(--muted);font-size:.9rem}
-.back:hover{color:var(--accent)}
-/* 확대 화면은 테두리 없이 화면 전체를 쓴다 */
-dialog{border:0;padding:0;margin:0;background:transparent;
-  width:100vw;height:100dvh;max-width:100vw;max-height:100dvh;
-  overflow:auto;overscroll-behavior:contain}
-dialog::backdrop{background:rgba(0,0,0,.94)}
-#lbbody{min-height:100dvh;display:flex;align-items:center;justify-content:center}
-#lbbody.zoomed{align-items:flex-start}
-dialog img,dialog video{max-width:100vw;max-height:100dvh;width:auto;height:auto;
-  display:block;border-radius:0}
-/* 기본은 한 화면에 다 들어오게. 자세히 볼 땐 눌러서 원래 폭으로 확대. */
-dialog img{cursor:zoom-in}
-dialog img.zoom{max-width:none;max-height:none;width:100vw;cursor:zoom-out}
-footer{border-top:1px solid var(--line);padding:2rem 1.5rem;color:var(--muted);font-size:.85rem}
-</style></head><body><header><div class="wrap"><a class="back" href="../index.html">← 전체 학기</a><h1>2022-1</h1><div class="sub">한국예술종합학교 연극원 무대미술과 · 멀티미디어</div></div></header><main><div class="wrap"><h2>김민정</h2><div class="grid"><span class="tile"><video preload="metadata" src="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/33_2.mp4#t=0.5" muted data-full="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/33_2.mp4" data-kind="video" data-name="33_2"></video><span class="play">▶</span><span class="badge">영상</span></span><img loading="lazy" src="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/Untitled%201.jpg" alt="Untitled 1" data-full="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/Untitled%201.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/Untitled%202.jpg" alt="Untitled 2" data-full="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/Untitled%202.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/Untitled.jpg" alt="Untitled" data-full="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/Untitled.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/vlcsnap-2022-08-11-17h58m11s091.jpg" alt="vlcsnap-2022-08-11-17h58m11s091" data-full="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/vlcsnap-2022-08-11-17h58m11s091.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/vlcsnap-2022-08-11-17h58m23s619.jpg" alt="vlcsnap-2022-08-11-17h58m23s619" data-full="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/vlcsnap-2022-08-11-17h58m23s619.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/vlcsnap-2022-08-11-17h58m33s318.jpg" alt="vlcsnap-2022-08-11-17h58m33s318" data-full="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/vlcsnap-2022-08-11-17h58m33s318.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/vlcsnap-2022-08-11-17h58m36s238.jpg" alt="vlcsnap-2022-08-11-17h58m36s238" data-full="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/vlcsnap-2022-08-11-17h58m36s238.jpg"></div><h2>김재란</h2><div class="grid"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%201.jpg" alt="Untitled 1" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%201.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2010.jpg" alt="Untitled 10" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2010.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2011.jpg" alt="Untitled 11" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2011.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2012.jpg" alt="Untitled 12" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2012.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2013.jpg" alt="Untitled 13" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2013.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2014.jpg" alt="Untitled 14" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2014.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2015.jpg" alt="Untitled 15" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2015.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%202.jpg" alt="Untitled 2" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%202.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%203.jpg" alt="Untitled 3" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%203.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%204.jpg" alt="Untitled 4" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%204.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%205.jpg" alt="Untitled 5" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%205.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%206.jpg" alt="Untitled 6" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%206.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%207.jpg" alt="Untitled 7" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%207.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%208.jpg" alt="Untitled 8" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%208.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%209.jpg" alt="Untitled 9" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%209.jpg"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled.jpg" alt="Untitled" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled.jpg"></div><h2>박수현</h2><div class="grid"><img loading="lazy" src="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/Untitled%201.jpg" alt="Untitled 1" data-full="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/Untitled%201.jpg"><img loading="lazy" src="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/Untitled%202.jpg" alt="Untitled 2" data-full="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/Untitled%202.jpg"><img loading="lazy" src="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/Untitled.jpg" alt="Untitled" data-full="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/Untitled.jpg"><img loading="lazy" src="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/frontview.jpg" alt="frontview" data-full="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/frontview.jpg"><img loading="lazy" src="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/leftview.jpg" alt="leftview" data-full="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/leftview.jpg"><img loading="lazy" src="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/perspectiveview.jpg" alt="perspectiveview" data-full="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/perspectiveview.jpg"><img loading="lazy" src="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/perspectiveview2.jpg" alt="perspectiveview2" data-full="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/perspectiveview2.jpg"><img loading="lazy" src="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/topview.jpg" alt="topview" data-full="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/topview.jpg"></div><h2>이상주</h2><div class="grid"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%201.jpg" alt="Untitled 1" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%201.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2010.jpg" alt="Untitled 10" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2010.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2011.jpg" alt="Untitled 11" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2011.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2012.jpg" alt="Untitled 12" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2012.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2013.jpg" alt="Untitled 13" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2013.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2014.jpg" alt="Untitled 14" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2014.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2015.jpg" alt="Untitled 15" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2015.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%202.jpg" alt="Untitled 2" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%202.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%203.jpg" alt="Untitled 3" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%203.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%204.jpg" alt="Untitled 4" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%204.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%205.jpg" alt="Untitled 5" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%205.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%206.jpg" alt="Untitled 6" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%206.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%207.jpg" alt="Untitled 7" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%207.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%208.jpg" alt="Untitled 8" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%208.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%209.jpg" alt="Untitled 9" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%209.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled.jpg" alt="Untitled" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled.jpg"></div><h2>이예원</h2><div class="grid"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/43BD5F64-AFD7-4AB9-9D92-A271DDE06D7E.jpg" alt="43BD5F64-AFD7-4AB9-9D92-A271DDE06D7E" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/43BD5F64-AFD7-4AB9-9D92-A271DDE06D7E.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/583BB474-E47E-4057-BB3A-5FE02CE45055.jpg" alt="583BB474-E47E-4057-BB3A-5FE02CE45055" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/583BB474-E47E-4057-BB3A-5FE02CE45055.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/C5743D18-0BEA-4005-9319-997208730F22.jpg" alt="C5743D18-0BEA-4005-9319-997208730F22" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/C5743D18-0BEA-4005-9319-997208730F22.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/CE28AC8D-2A17-4D74-A8E4-76892F33ADAF.jpg" alt="CE28AC8D-2A17-4D74-A8E4-76892F33ADAF" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/CE28AC8D-2A17-4D74-A8E4-76892F33ADAF.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/F1560B49-6F73-42DD-B3A4-63C57E9931D3.jpg" alt="F1560B49-6F73-42DD-B3A4-63C57E9931D3" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/F1560B49-6F73-42DD-B3A4-63C57E9931D3.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/vlcsnap-2022-08-11-17h24m58s250-50.jpg" alt="vlcsnap-2022-08-11-17h24m58s250-50" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/vlcsnap-2022-08-11-17h24m58s250-50.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/vlcsnap-2022-08-11-17h25m02s878-50.jpg" alt="vlcsnap-2022-08-11-17h25m02s878-50" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/vlcsnap-2022-08-11-17h25m02s878-50.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/vlcsnap-2022-08-11-17h25m15s355-50.jpg" alt="vlcsnap-2022-08-11-17h25m15s355-50" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/vlcsnap-2022-08-11-17h25m15s355-50.jpg"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/vlcsnap-2022-08-11-17h25m30s695-50.jpg" alt="vlcsnap-2022-08-11-17h25m30s695-50" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/vlcsnap-2022-08-11-17h25m30s695-50.jpg"><span class="tile"><video preload="metadata" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/%EC%8C%93%EC%9E%84_%EC%9D%B4%EC%98%88%EC%9B%90.mp4#t=0.5" muted data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/%EC%8C%93%EC%9E%84_%EC%9D%B4%EC%98%88%EC%9B%90.mp4" data-kind="video" data-name="쌓임_이예원"></video><span class="play">▶</span><span class="badge">영상</span></span></div></div></main>
-<footer><div class="wrap">노션 아카이브에서 생성 · 이미지 JPEG 장변 1600px / 영상 H.264 장변 1280px</div></footer>
-
-<dialog id="lb"><div id="lbbody"></div></dialog>
-<script>
-const lb=document.getElementById('lb'), body=document.getElementById('lbbody');
-const items=[...document.querySelectorAll('[data-full]')];
-let idx=0;
-
-function show(i){
-  idx=(i+items.length)%items.length;
-  const el=items[idx];
-  body.className='';
-  body.innerHTML = el.dataset.kind==='video'
-    ? '<video controls autoplay playsinline src="'+el.dataset.full+'"></video>'
-    : '<img src="'+el.dataset.full+'" alt="">';
+:root { color-scheme: light; }
+* { margin:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+body {
+  font-family: Georgia, "Apple SD Gothic Neo", serif;
+  background:#d9d9d9; color:#3d3833;
+  padding:0 1.5rem 3rem;
+  display:flex; flex-direction:column; min-height:100dvh;
 }
-items.forEach((el,i)=>el.addEventListener('click',()=>{ show(i); lb.showModal(); }));
+a { color:inherit; text-decoration:none; }
+.wrap { width:100%; max-width:1100px; margin:0 auto; }
+/* 아이폰 햅틱용 숨은 스위치 — 탭 대상을 label 로 만들어 이걸 토글시킨다 */
+#hap { position:fixed; top:0; left:0; width:1px; height:1px; opacity:0; pointer-events:none; }
 
-// 이미지 누르면 원래 폭으로 확대/축소, 빈 곳 누르면 닫기
-body.addEventListener('click',e=>{
-  if(e.target.tagName==='IMG'){
-    e.stopPropagation();
-    e.target.classList.toggle('zoom');
-    body.classList.toggle('zoomed');
-  } else if(e.target===body){ lb.close(); }
-});
-lb.addEventListener('click',e=>{ if(e.target===lb) lb.close(); });
-lb.addEventListener('close',()=>{ body.innerHTML=''; });
+/* 상단 고정, 배경 투명 — 로고와 학기 이름만 떠 있고 작품이 그 위를 지나간다 */
+header { width:100%; max-width:1100px; margin:0 auto 1.5rem;
+  display:flex; justify-content:space-between; align-items:center;
+  position:sticky; top:0; padding:2.5rem 0 1rem; pointer-events:none; }
+header a, header label { pointer-events:auto; }
+#logoBtn { display:flex; cursor:pointer; }
+.tag { font-family:"Helvetica Neue","Apple SD Gothic Neo",sans-serif; font-weight:300;
+  font-size:.68rem; letter-spacing:.14em; color:#89837a; }
 
-// 위아래 스와이프로 앞뒤 이동 (확대 상태에선 스크롤이 우선)
-let y0=null;
-lb.addEventListener('touchstart',e=>{
-  y0 = body.querySelector('.zoom') ? null : e.touches[0].clientY;
+.intro { width:100%; max-width:1100px; margin:0 auto 2.5rem; }
+h1 { font-weight:400; font-size:clamp(1.7rem,3.6vw,2.4rem); letter-spacing:-.02em; }
+.intro .tag { margin-top:.5rem; }
+
+/* 학기 카드 */
+.years { width:100%; max-width:1100px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:2rem; z-index:1; }
+.card { position:relative; display:block; }
+.card .thumb { aspect-ratio:4/3; display:block;
+  background:#cfcfcf center/cover no-repeat;
+  border-radius:14px; border-top-right-radius:0; }
+.card .meta { position:absolute; left:0; right:0; bottom:0; padding:1.4rem .9rem .7rem;
+  color:#fff; border-radius:0 0 14px 14px;
+  background:linear-gradient(transparent,rgba(35,30,25,.6)); }
+.card .meta b { font-weight:400; font-size:1.1rem; letter-spacing:.02em; }
+.card .meta span { display:block; font-family:"Helvetica Neue",sans-serif; font-weight:300;
+  font-size:.66rem; letter-spacing:.12em; opacity:.85; margin-top:.15rem; }
+
+/* 작품 그리드 */
+main { width:100%; }
+h2 { font-weight:400; font-size:1.05rem; letter-spacing:.02em;
+  max-width:1100px; margin:2.5rem auto .7rem; }
+h2:first-of-type { margin-top:0; }
+.path { max-width:1100px; margin:-.5rem auto .7rem;
+  font-family:"Helvetica Neue",sans-serif; font-weight:300;
+  font-size:.66rem; letter-spacing:.12em; color:#89837a; }
+.grid { width:100%; max-width:1100px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:1rem;
+  z-index:1; }  /* 상단 고정 헤더 위로 지나가게 */
+.cell { position:relative; display:block; }
+.grid img, .grid video { width:100%; height:100%; display:block; aspect-ratio:1;
+  object-fit:cover; background:#cfcfcf; cursor:zoom-in;
+  border-radius:14px; border-top-right-radius:0; }
+/* 영상은 첫 프레임만 보여 이미지와 구분이 안 된다 → 재생 표시를 얹는다 */
+.cell .play { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  color:#fff; font-size:1.5rem; pointer-events:none; text-shadow:0 1px 8px rgba(0,0,0,.55); }
+.cell .badge { position:absolute; left:.5rem; bottom:.5rem; pointer-events:none;
+  font-family:"Helvetica Neue",sans-serif; font-weight:300;
+  font-size:.6rem; letter-spacing:.12em; color:#fff;
+  padding:.18rem .45rem; border-radius:999px; background:rgba(35,30,25,.6); }
+
+footer { width:100%; max-width:1100px; margin:auto auto 0; padding-top:4rem;
+  text-align:right; font-family:"Helvetica Neue","Apple SD Gothic Neo",sans-serif;
+  font-weight:300; font-size:.68rem; color:#ededed; letter-spacing:.14em; }
+
+/* ── 확대 보기 ──────────────────────────────────────────────────────────
+   <dialog> 를 쓰지 않는다. 톱레이어·백드롭은 iOS 에서 검증이 안 된 동작이라
+   평범한 fixed div + 직접 스크롤 잠금으로 간다 (ceramic POLICY.md §8). */
+html.locked { overflow:hidden; }
+#viewer { position:fixed; inset:0; display:none; z-index:10;
+  background:rgba(30,25,20,.85); overflow:hidden; overscroll-behavior:contain; }
+#viewer.open { display:block; animation:fadeIn .32s ease; }
+#viewer.open .pop { animation:rise .55s .05s cubic-bezier(.16,1,.3,1) backwards; }
+@keyframes fadeIn { from { opacity:0; } }
+@keyframes rise { from { transform:translateY(10px) scale(.985); } }
+@media (prefers-reduced-motion: reduce) {
+  #viewer.open, #viewer.open .pop { animation:none; }
+}
+/* 3장(이전·현재·다음)만 들고 transform 으로 넘기는 세로 페이저.
+   스크롤 스냅은 iOS 에서 문제가 많아 쓰지 않는다 — 제스처는 전부 JS 가 처리. */
+#track { display:flex; flex-direction:column; width:100%; height:100%;
+  transform:translateY(-100%); touch-action:none; }
+#track > div { flex:0 0 100%; display:flex; align-items:center; justify-content:center; }
+#track img, #track video { max-width:92%; max-height:92%; display:block; cursor:zoom-out;
+  border-radius:14px; border-top-right-radius:0;
+  -webkit-user-drag:none; user-select:none; }
+</style></head><body>
+<input type="checkbox" switch id="hap" tabindex="-1" aria-hidden="true">
+<header><a href="../index.html"><label for="hap" id="logoBtn" aria-label="전체 학기"><svg width="44" height="44" viewBox="0 0 56 56"><circle cx="24" cy="30" r="16" fill="#b5b5b5"/><rect x="24" y="8" width="26" height="26" fill="#3a3a3a"/></svg></label></a><span class="tag">2022-1</span></header><main><h2>김민정</h2><div class="grid"><label for="hap" class="cell"><video preload="metadata" src="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/33_2.mp4#t=0.5" muted data-full="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/33_2.mp4" data-kind="video"></video><span class="play">▶</span><span class="badge">영상</span></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/Untitled%201.jpg" alt="Untitled 1" data-full="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/Untitled%201.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/Untitled%202.jpg" alt="Untitled 2" data-full="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/Untitled%202.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/Untitled.jpg" alt="Untitled" data-full="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/Untitled.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/vlcsnap-2022-08-11-17h58m11s091.jpg" alt="vlcsnap-2022-08-11-17h58m11s091" data-full="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/vlcsnap-2022-08-11-17h58m11s091.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/vlcsnap-2022-08-11-17h58m23s619.jpg" alt="vlcsnap-2022-08-11-17h58m23s619" data-full="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/vlcsnap-2022-08-11-17h58m23s619.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/vlcsnap-2022-08-11-17h58m33s318.jpg" alt="vlcsnap-2022-08-11-17h58m33s318" data-full="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/vlcsnap-2022-08-11-17h58m33s318.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/vlcsnap-2022-08-11-17h58m36s238.jpg" alt="vlcsnap-2022-08-11-17h58m36s238" data-full="2022-1/%EA%B9%80%EB%AF%BC%EC%A0%95-%EC%97%B0%EA%B7%B9%20%EC%A7%91/vlcsnap-2022-08-11-17h58m36s238.jpg"></label></div><h2>김재란</h2><div class="grid"><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%201.jpg" alt="Untitled 1" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%201.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2010.jpg" alt="Untitled 10" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2010.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2011.jpg" alt="Untitled 11" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2011.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2012.jpg" alt="Untitled 12" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2012.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2013.jpg" alt="Untitled 13" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2013.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2014.jpg" alt="Untitled 14" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2014.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2015.jpg" alt="Untitled 15" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%2015.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%202.jpg" alt="Untitled 2" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%202.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%203.jpg" alt="Untitled 3" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%203.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%204.jpg" alt="Untitled 4" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%204.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%205.jpg" alt="Untitled 5" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%205.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%206.jpg" alt="Untitled 6" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%206.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%207.jpg" alt="Untitled 7" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%207.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%208.jpg" alt="Untitled 8" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%208.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%209.jpg" alt="Untitled 9" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled%209.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled.jpg" alt="Untitled" data-full="2022-1/%EA%B9%80%EC%9E%AC%EB%9E%80/Untitled.jpg"></label></div><h2>박수현</h2><div class="grid"><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/Untitled%201.jpg" alt="Untitled 1" data-full="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/Untitled%201.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/Untitled%202.jpg" alt="Untitled 2" data-full="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/Untitled%202.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/Untitled.jpg" alt="Untitled" data-full="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/Untitled.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/frontview.jpg" alt="frontview" data-full="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/frontview.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/leftview.jpg" alt="leftview" data-full="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/leftview.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/perspectiveview.jpg" alt="perspectiveview" data-full="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/perspectiveview.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/perspectiveview2.jpg" alt="perspectiveview2" data-full="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/perspectiveview2.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/topview.jpg" alt="topview" data-full="2022-1/%EB%B0%95%EC%88%98%ED%98%84-The%20Monkfish/topview.jpg"></label></div><h2>이상주</h2><div class="grid"><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%201.jpg" alt="Untitled 1" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%201.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2010.jpg" alt="Untitled 10" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2010.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2011.jpg" alt="Untitled 11" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2011.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2012.jpg" alt="Untitled 12" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2012.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2013.jpg" alt="Untitled 13" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2013.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2014.jpg" alt="Untitled 14" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2014.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2015.jpg" alt="Untitled 15" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%2015.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%202.jpg" alt="Untitled 2" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%202.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%203.jpg" alt="Untitled 3" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%203.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%204.jpg" alt="Untitled 4" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%204.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%205.jpg" alt="Untitled 5" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%205.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%206.jpg" alt="Untitled 6" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%206.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%207.jpg" alt="Untitled 7" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%207.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%208.jpg" alt="Untitled 8" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%208.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%209.jpg" alt="Untitled 9" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled%209.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled.jpg" alt="Untitled" data-full="2022-1/%EC%9D%B4%EC%83%81%EC%A3%BC-%EC%84%B8%EC%83%81%EC%9C%BC%EB%A1%9C%20%EB%82%98%EA%B0%84%20%EA%BC%AC%EB%A7%88%20%EB%8F%84%EA%B9%A8%EB%B9%84/Untitled.jpg"></label></div><h2>이예원</h2><div class="grid"><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/43BD5F64-AFD7-4AB9-9D92-A271DDE06D7E.jpg" alt="43BD5F64-AFD7-4AB9-9D92-A271DDE06D7E" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/43BD5F64-AFD7-4AB9-9D92-A271DDE06D7E.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/583BB474-E47E-4057-BB3A-5FE02CE45055.jpg" alt="583BB474-E47E-4057-BB3A-5FE02CE45055" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/583BB474-E47E-4057-BB3A-5FE02CE45055.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/C5743D18-0BEA-4005-9319-997208730F22.jpg" alt="C5743D18-0BEA-4005-9319-997208730F22" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/C5743D18-0BEA-4005-9319-997208730F22.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/CE28AC8D-2A17-4D74-A8E4-76892F33ADAF.jpg" alt="CE28AC8D-2A17-4D74-A8E4-76892F33ADAF" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/CE28AC8D-2A17-4D74-A8E4-76892F33ADAF.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/F1560B49-6F73-42DD-B3A4-63C57E9931D3.jpg" alt="F1560B49-6F73-42DD-B3A4-63C57E9931D3" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/F1560B49-6F73-42DD-B3A4-63C57E9931D3.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/vlcsnap-2022-08-11-17h24m58s250-50.jpg" alt="vlcsnap-2022-08-11-17h24m58s250-50" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/vlcsnap-2022-08-11-17h24m58s250-50.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/vlcsnap-2022-08-11-17h25m02s878-50.jpg" alt="vlcsnap-2022-08-11-17h25m02s878-50" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/vlcsnap-2022-08-11-17h25m02s878-50.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/vlcsnap-2022-08-11-17h25m15s355-50.jpg" alt="vlcsnap-2022-08-11-17h25m15s355-50" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/vlcsnap-2022-08-11-17h25m15s355-50.jpg"></label><label for="hap" class="cell"><img loading="lazy" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/vlcsnap-2022-08-11-17h25m30s695-50.jpg" alt="vlcsnap-2022-08-11-17h25m30s695-50" data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/vlcsnap-2022-08-11-17h25m30s695-50.jpg"></label><label for="hap" class="cell"><video preload="metadata" src="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/%EC%8C%93%EC%9E%84_%EC%9D%B4%EC%98%88%EC%9B%90.mp4#t=0.5" muted data-full="2022-1/%EC%9D%B4%EC%98%88%EC%9B%90-%EC%8C%93%EC%9E%84/%EC%8C%93%EC%9E%84_%EC%9D%B4%EC%98%88%EC%9B%90.mp4" data-kind="video"></video><span class="play">▶</span><span class="badge">영상</span></label></div></main>
+<footer>스튜디오F 아카이브&ensp;|&ensp;KARTS STUDIO F © 2026</footer>
+
+<label for="hap" id="viewer" role="dialog" aria-modal="true"><div id="track"></div></label>
+<script>
+const viewer=document.getElementById('viewer'), track=document.getElementById('track');
+// 그리드에 그려진 순서 그대로 — 화면 순서와 스와이프 순서가 어긋날 수 없다
+const items=[...document.querySelectorAll('[data-full]')].map(el=>(
+  {src:el.dataset.full, vid:el.dataset.kind==='video', alt:el.getAttribute('alt')||''}));
+const n=items.length;
+let cur=0;
+
+const slides=[0,1,2].map(()=>{ const d=document.createElement('div'); track.appendChild(d); return d; });
+const mediaOf=j=>slides[j].firstElementChild;
+
+function fill(slot,i){
+  const it=items[i], el=slides[slot];
+  const want=it.vid?'VIDEO':'IMG';
+  if(el.firstElementChild?.tagName!==want || el.firstElementChild.dataset.src!==it.src){
+    el.innerHTML = it.vid
+      ? '<video controls playsinline preload="metadata"></video>'
+      : '<img alt="">';
+    const m=el.firstElementChild;
+    m.dataset.src=it.src; m.src=it.src;
+    if(!it.vid) m.alt=it.alt;
+  }
+}
+function show(){
+  if(!n) return;
+  if(zoom>1) resetZoom(false);
+  [(cur-1+n)%n, cur, (cur+1)%n].forEach((idx,j)=>fill(j,idx));
+}
+
+// 넘김 전환: 시작은 손가락 속도를 이어받고 끝은 길게 미끄러지며 안착
+const EASE='transform .7s cubic-bezier(.22,1,.36,1)';
+const FADE='filter .7s cubic-bezier(.22,1,.36,1)';
+const DIM=.25;
+const setFade=(vals,animate)=>{ [...track.children].forEach((d,j)=>{
+  d.style.transition=animate?FADE:'none'; d.style.filter=`brightness(${vals[j]})`; }); };
+const setY=(px,animate)=>{
+  track.style.transition=animate?EASE:'none';
+  track.style.transform=`translateY(calc(-100% + ${px}px))`;
+  const p=Math.min(1,Math.abs(px)/innerHeight);
+  setFade([px>0?1:DIM, 1-(1-DIM)*p, px<0?1:DIM], animate);
+};
+
+// 진행 중인 전환을 즉시 확정한다. 모든 입력이 이걸 먼저 부르므로 상태가 꼬여도
+// 다음 입력이 반드시 초기화한다 — 잠김 플래그가 없어 먹통이 될 수 없다.
+let pending=null;
+function commit(){
+  if(!pending) return;
+  const dir=pending.dir; clearTimeout(pending.timer);
+  cur=((cur+dir)%n+n)%n; pending=null;
+  // 화면에 들어온 장이 그대로 가운데가 되게 DOM 을 회전 — 가운데 src 를 갈아끼우면
+  // 새 그림이 디코딩되기 전 한 프레임 동안 이전 그림이 비친다.
+  if(dir===1){ track.appendChild(track.firstElementChild); slides.push(slides.shift()); }
+  if(dir===-1){ track.prepend(track.lastElementChild); slides.unshift(slides.pop()); }
+  slides.forEach(s=>s.classList.remove('pop'));
+  show(); setY(0,false);
+}
+
+const buzz=(ms=4)=>navigator.vibrate?.(ms);
+
+// 확정은 transitionend 가 아니라 타이머로 — transitionend 는 유실될 수 있다
+function slideTo(dir){
+  if(!n) return;
+  commit();
+  if(!dir || n<2){ setY(0,true); return; }
+  buzz();
+  track.style.transition=EASE;
+  track.style.transform=`translateY(${-100-dir*100}%)`;
+  setFade(dir>0?[DIM,DIM,1]:[1,DIM,DIM], true);
+  pending={dir, timer:setTimeout(commit,720)};
+}
+
+let pageY=0;
+const lockPage=()=>{ pageY=scrollY; document.documentElement.classList.add('locked'); };
+const unlockPage=()=>{ document.documentElement.classList.remove('locked'); scrollTo(0,pageY); };
+const isOpen=()=>viewer.classList.contains('open');
+const closeViewer=()=>{ unlockPage(); viewer.classList.remove('open');
+  const m=mediaOf(1); if(m?.tagName==='VIDEO') m.pause(); };
+
+function openAt(i){
+  buzz(); commit(); lockPage();
+  cur=i; show(); setY(0,false);
+  slides[1].classList.add('pop');
+  viewer.classList.add('open');
+}
+document.querySelectorAll('[data-full]').forEach((el,i)=>el.addEventListener('click',()=>openAt(i)));
+
+// iOS 필수 한 줄: 문서 레벨 터치 리스너가 있어야 요소들에 터치가 제대로 전달된다
+document.addEventListener('touchstart',()=>{},{passive:true});
+
+// 핀치 확대 — 가운데 장에 transform 하나만 얹는다
+let zoom=1, zx=0, zy=0, pinch=null, panX0=0, panY0=0, justPinched=false;
+function applyZoom(animate){
+  const m=mediaOf(1); if(!m) return;
+  m.style.transition=animate?'transform .25s ease':'none';
+  m.style.transform=zoom>1?`translate(${zx}px, ${zy}px) scale(${zoom})`:'';
+}
+function resetZoom(animate){ zoom=1; zx=zy=0; pinch=null; applyZoom(animate); }
+const dist=t=>Math.hypot(t[0].clientX-t[1].clientX, t[0].clientY-t[1].clientY);
+
+let tx=0, ty=0, tdy=0, tdrag=false;
+track.addEventListener('touchstart',e=>{
+  if(e.touches.length>=2){
+    pinch={ d0:dist(e.touches), z0:zoom,
+            x0:(e.touches[0].clientX+e.touches[1].clientX)/2,
+            y0:(e.touches[0].clientY+e.touches[1].clientY)/2, zx0:zx, zy0:zy };
+    tdrag=false; return;
+  }
+  commit();
+  tx=e.touches[0].clientX; ty=e.touches[0].clientY;
+  panX0=zx; panY0=zy; tdy=0; tdrag=false;
+  track.style.transition='none';
 },{passive:true});
-lb.addEventListener('touchend',e=>{
-  if(y0===null) return;
-  const dy=e.changedTouches[0].clientY-y0; y0=null;
-  if(Math.abs(dy)>60) show(idx + (dy<0 ? 1 : -1));
+track.addEventListener('touchmove',e=>{
+  if(pinch && e.touches.length>=2){
+    e.preventDefault();
+    zoom=Math.min(5,Math.max(1, pinch.z0*dist(e.touches)/pinch.d0));
+    zx=pinch.zx0+(e.touches[0].clientX+e.touches[1].clientX)/2-pinch.x0;
+    zy=pinch.zy0+(e.touches[0].clientY+e.touches[1].clientY)/2-pinch.y0;
+    applyZoom(false); return;
+  }
+  if(zoom>1){                       // 확대 중 한 손가락 = 패닝
+    e.preventDefault();
+    zx=panX0+e.touches[0].clientX-tx; zy=panY0+e.touches[0].clientY-ty;
+    applyZoom(false); return;
+  }
+  tdy=e.touches[0].clientY-ty;
+  if(!tdrag && Math.abs(tdy)>6) tdrag=true;   // 탭과 섞이지 않게 6px 문턱
+  if(tdrag){ e.preventDefault(); setY(tdy,false); }
+},{passive:false});
+// 화면 높이의 18%(데스크톱 110px 상한)만 밀어도 넘어간다
+const THRESHOLD=()=>Math.min(110, innerHeight*.18);
+track.addEventListener('touchend',e=>{
+  if(pinch){
+    justPinched=true;
+    if(zoom<=1.05) resetZoom(true);
+    pinch=null;
+    if(e.touches.length===1){ tx=e.touches[0].clientX; ty=e.touches[0].clientY;
+                              panX0=zx; panY0=zy; }
+    return;
+  }
+  if(zoom>1) return;
+  if(!tdrag) return;                // 탭은 click 핸들러가 닫기로 처리
+  slideTo(Math.abs(tdy)>THRESHOLD()?(tdy<0?1:-1):0);
 },{passive:true});
+track.addEventListener('touchcancel',()=>{ pinch=null; if(tdrag) slideTo(0); },{passive:true});
 
-// 키보드도 같은 방향으로
-addEventListener('keydown',e=>{
-  if(!lb.open) return;
-  if(e.key==='ArrowDown'||e.key==='ArrowRight') show(idx+1);
-  if(e.key==='ArrowUp'||e.key==='ArrowLeft') show(idx-1);
+// 데스크톱 마우스 드래그
+let my=0, mdy=0, mdown=false, mdrag=false;
+track.addEventListener('mousedown',e=>{
+  if(e.button) return;
+  commit(); mdown=true; mdrag=false; mdy=0; my=e.clientY;
+  track.style.transition='none'; e.preventDefault();
 });
+addEventListener('mousemove',e=>{
+  if(!mdown) return;
+  mdy=e.clientY-my;
+  if(!mdrag && Math.abs(mdy)>6) mdrag=true;
+  if(mdrag) setY(mdy,false);
+});
+addEventListener('mouseup',()=>{
+  if(!mdown) return;
+  mdown=false;
+  if(mdrag) slideTo(Math.abs(mdy)>THRESHOLD()?(mdy<0?1:-1):0);
+});
+
+// 탭/클릭(드래그·핀치가 아니었을 때만) → 확대 중이면 원래 크기로, 아니면 닫기
+track.addEventListener('click',e=>{
+  if(tdrag||mdrag||justPinched){ tdrag=mdrag=justPinched=false; return; }
+  if(e.target.tagName==='VIDEO') return;   // 영상 컨트롤 조작은 그대로 통과
+  buzz();
+  if(zoom>1){ resetZoom(true); return; }
+  closeViewer();
+});
+
+// 트랙패드 두 손가락 스와이프 — 관성 이벤트가 계속 오므로 제스처당 한 번만
+let wheelLock=false, wheelT=0;
+track.addEventListener('wheel',e=>{
+  if(e.ctrlKey){                    // 트랙패드 핀치
+    e.preventDefault();
+    zoom=Math.min(5,Math.max(1, zoom-e.deltaY*.02));
+    if(zoom===1) zx=zy=0;
+    applyZoom(false); return;
+  }
+  e.preventDefault();
+  clearTimeout(wheelT); wheelT=setTimeout(()=>{ wheelLock=false; },250);
+  if(wheelLock || Math.abs(e.deltaY)<25) return;
+  wheelLock=true;
+  slideTo(e.deltaY>0?1:-1);
+},{passive:false});
+
+document.onkeydown=e=>{
+  if(!isOpen()) return;
+  if(e.key==='Escape'){ closeViewer(); return; }
+  const dir={ArrowUp:-1, ArrowLeft:-1, ArrowDown:1, ArrowRight:1}[e.key];
+  if(dir) slideTo(dir);
+};
 </script>
 </body></html>
