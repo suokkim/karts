@@ -45,65 +45,168 @@ h2:first-of-type{margin-top:.25rem}
 .doc{display:flex;align-items:center;gap:.5rem;padding:.9rem;border:1px dashed var(--line);border-radius:8px}
 .back{display:inline-block;margin-bottom:1rem;color:var(--muted);font-size:.9rem}
 .back:hover{color:var(--accent)}
-/* 확대 화면은 테두리 없이 화면 전체를 쓴다 */
-dialog{border:0;padding:0;margin:0;background:transparent;
-  width:100vw;height:100dvh;max-width:100vw;max-height:100dvh;
-  overflow:auto;overscroll-behavior:contain}
-dialog::backdrop{background:rgba(0,0,0,.94)}
-#lbbody{min-height:100dvh;display:flex;align-items:center;justify-content:center}
-#lbbody.zoomed{align-items:flex-start}
-dialog img,dialog video{max-width:100vw;max-height:100dvh;width:auto;height:auto;
-  display:block;border-radius:0}
-/* 기본은 한 화면에 다 들어오게. 자세히 볼 땐 눌러서 원래 폭으로 확대. */
-dialog img{cursor:zoom-in}
-dialog img.zoom{max-width:none;max-height:none;width:100vw;cursor:zoom-out}
+/* ── 확대 보기 ─────────────────────────────────────────────────────────
+   <dialog> 를 쓰지 않는다 — 톱레이어·백드롭은 iOS 에서 동작이 들쭉날쭉하다.
+   평범한 fixed div + 직접 스크롤 잠금이 훨씬 예측 가능하다. */
+html.locked{overflow:hidden}          /* 뒤 페이지가 같이 스크롤되던 문제 */
+#lb{position:fixed;inset:0;z-index:10;display:none;background:rgba(0,0,0,.94);
+  touch-action:none;overscroll-behavior:contain;user-select:none}
+#lb.open{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0}}
+#stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+#stage img,#stage video{max-width:100vw;max-height:100dvh;width:auto;height:auto;
+  display:block;will-change:transform;-webkit-user-drag:none}
+/* 손을 뗐을 때만 애니메이션 — 끄는 동안은 손가락을 그대로 따라가야 한다 */
+#stage.anim img,#stage.anim video{transition:transform .34s cubic-bezier(.22,1,.36,1),
+  opacity .34s cubic-bezier(.22,1,.36,1)}
+/* 위치 표시: 장수가 적으면 점, 많으면 막대 + 숫자 */
+#ind{position:absolute;left:0;right:0;bottom:max(1rem,env(safe-area-inset-bottom));
+  display:flex;flex-direction:column;align-items:center;gap:.45rem;
+  pointer-events:none;color:#fff}
+#dots{display:flex;gap:6px}
+#dots i{width:6px;height:6px;border-radius:50%;background:#fff;opacity:.3}
+#dots i.on{opacity:.95}
+#bar{width:min(200px,44vw);height:2px;border-radius:2px;background:rgba(255,255,255,.25)}
+#bar b{display:block;height:100%;border-radius:2px;background:#fff;opacity:.9}
+#num{font-size:.72rem;letter-spacing:.1em;opacity:.7}
 footer{border-top:1px solid var(--line);padding:2rem 1.5rem;color:var(--muted);font-size:.85rem}
 </style></head><body><header><div class="wrap"><a class="back" href="../index.html">← 전체 학기</a><h1>2025-2</h1><div class="sub">한국예술종합학교 연극원 무대미술과 · 멀티미디어</div></div></header><main><div class="wrap"><h2>강소랑</h2><div class="grid"><img loading="lazy" src="%EA%B0%95%EC%86%8C%EB%9E%91/unnamed/unnamed.jpg" alt="unnamed" data-full="%EA%B0%95%EC%86%8C%EB%9E%91/unnamed/unnamed.jpg"><img loading="lazy" src="%EA%B0%95%EC%86%8C%EB%9E%91/unnamed%20%281%29/unnamed_%281%29.jpg" alt="unnamed_(1)" data-full="%EA%B0%95%EC%86%8C%EB%9E%91/unnamed%20%281%29/unnamed_%281%29.jpg"><img loading="lazy" src="%EA%B0%95%EC%86%8C%EB%9E%91/unnamed%20%282%29/unnamed_%282%29.jpg" alt="unnamed_(2)" data-full="%EA%B0%95%EC%86%8C%EB%9E%91/unnamed%20%282%29/unnamed_%282%29.jpg"><img loading="lazy" src="%EA%B0%95%EC%86%8C%EB%9E%91/unnamed%20%283%29/unnamed_%283%29.jpg" alt="unnamed_(3)" data-full="%EA%B0%95%EC%86%8C%EB%9E%91/unnamed%20%283%29/unnamed_%283%29.jpg"><img loading="lazy" src="%EA%B0%95%EC%86%8C%EB%9E%91/unnamed%20%284%29/unnamed_%284%29.jpg" alt="unnamed_(4)" data-full="%EA%B0%95%EC%86%8C%EB%9E%91/unnamed%20%284%29/unnamed_%284%29.jpg"></div><h2>김도연</h2><div class="grid"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4_%EB%A0%8C%EB%8D%94%EB%A7%8101%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4_%EB%A0%8C%EB%8D%94%EB%A7%8101_%ED%81%AC%EA%B2%8C.jpg" alt="보르헤스_렌더링01_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4_%EB%A0%8C%EB%8D%94%EB%A7%8101%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4_%EB%A0%8C%EB%8D%94%EB%A7%8101_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4_%EB%A0%8C%EB%8D%94%EB%A7%8102%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4_%EB%A0%8C%EB%8D%94%EB%A7%8102_%ED%81%AC%EA%B2%8C.jpg" alt="보르헤스_렌더링02_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4_%EB%A0%8C%EB%8D%94%EB%A7%8102%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4_%EB%A0%8C%EB%8D%94%EB%A7%8102_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4_%EB%A0%8C%EB%8D%94%EB%A7%8103%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4_%EB%A0%8C%EB%8D%94%EB%A7%8103_%ED%81%AC%EA%B2%8C.jpg" alt="보르헤스_렌더링03_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4_%EB%A0%8C%EB%8D%94%EB%A7%8103%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4_%EB%A0%8C%EB%8D%94%EB%A7%8103_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EB%A0%8C%EB%8D%94%EB%A7%8101%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EB%A0%8C%EB%8D%94%EB%A7%8101_%ED%81%AC%EA%B2%8C.jpg" alt="보르헤스렌더링01_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EB%A0%8C%EB%8D%94%EB%A7%8101%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EB%A0%8C%EB%8D%94%EB%A7%8101_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EB%A0%8C%EB%8D%94%EB%A7%8102%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EB%A0%8C%EB%8D%94%EB%A7%8102_%ED%81%AC%EA%B2%8C.jpg" alt="보르헤스렌더링02_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EB%A0%8C%EB%8D%94%EB%A7%8102%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EB%A0%8C%EB%8D%94%EB%A7%8102_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EB%A0%8C%EB%8D%94%EB%A7%8103%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EB%A0%8C%EB%8D%94%EB%A7%8103_%ED%81%AC%EA%B2%8C.jpg" alt="보르헤스렌더링03_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EB%A0%8C%EB%8D%94%EB%A7%8103%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EB%A0%8C%EB%8D%94%EB%A7%8103_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EC%8B%9C%EC%95%8801%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EC%8B%9C%EC%95%8801_%ED%81%AC%EA%B2%8C.jpg" alt="보르헤스시안01_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EC%8B%9C%EC%95%8801%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EC%8B%9C%EC%95%8801_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EC%8B%9C%EC%95%8802%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EC%8B%9C%EC%95%8802_%ED%81%AC%EA%B2%8C.jpg" alt="보르헤스시안02_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EC%8B%9C%EC%95%8802%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EC%8B%9C%EC%95%8802_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EC%8B%9C%EC%95%8802-1%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EC%8B%9C%EC%95%8802-1_%ED%81%AC%EA%B2%8C.jpg" alt="보르헤스시안02-1_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EC%8B%9C%EC%95%8802-1%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EC%8B%9C%EC%95%8802-1_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EC%8B%9C%EC%95%8803%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EC%8B%9C%EC%95%8803_%ED%81%AC%EA%B2%8C.jpg" alt="보르헤스시안03_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EC%8B%9C%EC%95%8803%20%ED%81%AC%EA%B2%8C/%EB%B3%B4%EB%A5%B4%ED%97%A4%EC%8A%A4%EC%8B%9C%EC%95%8803_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%EC%84%9C%EC%BB%A4%EC%8A%A4%EC%B2%9C%EB%A7%89%20%ED%81%AC%EA%B2%8C/%EC%84%9C%EC%BB%A4%EC%8A%A4%EC%B2%9C%EB%A7%89_%ED%81%AC%EA%B2%8C.jpg" alt="서커스천막_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%EC%84%9C%EC%BB%A4%EC%8A%A4%EC%B2%9C%EB%A7%89%20%ED%81%AC%EA%B2%8C/%EC%84%9C%EC%BB%A4%EC%8A%A4%EC%B2%9C%EB%A7%89_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%EC%84%9C%EC%BB%A4%EC%8A%A4%EC%B2%9C%EB%A7%8902%20%ED%81%AC%EA%B2%8C/%EC%84%9C%EC%BB%A4%EC%8A%A4%EC%B2%9C%EB%A7%8902_%ED%81%AC%EA%B2%8C.jpg" alt="서커스천막02_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%EC%84%9C%EC%BB%A4%EC%8A%A4%EC%B2%9C%EB%A7%8902%20%ED%81%AC%EA%B2%8C/%EC%84%9C%EC%BB%A4%EC%8A%A4%EC%B2%9C%EB%A7%8902_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%EC%96%B4%EC%8A%A4_%EC%86%8C%ED%92%88%ED%94%84%EB%A6%B0%ED%8C%85%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%EC%96%B4%EC%8A%A4_%EC%86%8C%ED%92%88%ED%94%84%EB%A6%B0%ED%8C%85_%ED%81%AC%EA%B2%8C.jpg" alt="타이어스_소품프린팅_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%EC%96%B4%EC%8A%A4_%EC%86%8C%ED%92%88%ED%94%84%EB%A6%B0%ED%8C%85%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%EC%96%B4%EC%8A%A4_%EC%86%8C%ED%92%88%ED%94%84%EB%A6%B0%ED%8C%85_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%EC%96%B4%EC%8A%A4_%EC%B4%9B%EB%8C%80_%ED%94%84%EB%A6%B0%ED%8C%85%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%EC%96%B4%EC%8A%A4_%EC%B4%9B%EB%8C%80_%ED%94%84%EB%A6%B0%ED%8C%85_%ED%81%AC%EA%B2%8C.jpg" alt="타이어스_촛대_프린팅_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%EC%96%B4%EC%8A%A4_%EC%B4%9B%EB%8C%80_%ED%94%84%EB%A6%B0%ED%8C%85%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%EC%96%B4%EC%8A%A4_%EC%B4%9B%EB%8C%80_%ED%94%84%EB%A6%B0%ED%8C%85_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EB%8B%A8%EA%B2%80_%EB%B8%94%EB%A0%8C%EB%8D%94%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EB%8B%A8%EA%B2%80_%EB%B8%94%EB%A0%8C%EB%8D%94_%ED%81%AC%EA%B2%8C.jpg" alt="타이터스_단검_블렌더_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EB%8B%A8%EA%B2%80_%EB%B8%94%EB%A0%8C%EB%8D%94%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EB%8B%A8%EA%B2%80_%EB%B8%94%EB%A0%8C%EB%8D%94_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EB%8B%A8%EA%B2%80_%ED%94%84%EB%A6%B0%ED%8C%85%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EB%8B%A8%EA%B2%80_%ED%94%84%EB%A6%B0%ED%8C%85_%ED%81%AC%EA%B2%8C.jpg" alt="타이터스_단검_프린팅_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EB%8B%A8%EA%B2%80_%ED%94%84%EB%A6%B0%ED%8C%85%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EB%8B%A8%EA%B2%80_%ED%94%84%EB%A6%B0%ED%8C%85_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EB%8B%A8%EA%B2%80_%ED%94%84%EB%A6%B0%ED%8C%8502%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EB%8B%A8%EA%B2%80_%ED%94%84%EB%A6%B0%ED%8C%8502_%ED%81%AC%EA%B2%8C.jpg" alt="타이터스_단검_프린팅02_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EB%8B%A8%EA%B2%80_%ED%94%84%EB%A6%B0%ED%8C%8502%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EB%8B%A8%EA%B2%80_%ED%94%84%EB%A6%B0%ED%8C%8502_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%EB%AA%A8%EB%8D%B8%EB%A7%81%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%EB%AA%A8%EB%8D%B8%EB%A7%81_%ED%81%AC%EA%B2%8C.jpg" alt="타이터스_와인잔_모델링_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%EB%AA%A8%EB%8D%B8%EB%A7%81%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%EB%AA%A8%EB%8D%B8%EB%A7%81_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%EB%AA%A8%EB%8D%B8%EB%A7%8102%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%EB%AA%A8%EB%8D%B8%EB%A7%8102_%ED%81%AC%EA%B2%8C.jpg" alt="타이터스_와인잔_모델링02_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%EB%AA%A8%EB%8D%B8%EB%A7%8102%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%EB%AA%A8%EB%8D%B8%EB%A7%8102_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%ED%94%84%EB%A6%B0%ED%8C%85%20%282%29%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%ED%94%84%EB%A6%B0%ED%8C%85_%282%29_%ED%81%AC%EA%B2%8C.jpg" alt="타이터스_와인잔_프린팅_(2)_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%ED%94%84%EB%A6%B0%ED%8C%85%20%282%29%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%ED%94%84%EB%A6%B0%ED%8C%85_%282%29_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%ED%94%84%EB%A6%B0%ED%8C%85%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%ED%94%84%EB%A6%B0%ED%8C%85_%ED%81%AC%EA%B2%8C.jpg" alt="타이터스_와인잔_프린팅_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%ED%94%84%EB%A6%B0%ED%8C%85%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%ED%94%84%EB%A6%B0%ED%8C%85_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%ED%94%84%EB%A6%B0%ED%8C%8502%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%ED%94%84%EB%A6%B0%ED%8C%8502_%ED%81%AC%EA%B2%8C.jpg" alt="타이터스_와인잔_프린팅02_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%ED%94%84%EB%A6%B0%ED%8C%8502%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%99%80%EC%9D%B8%EC%9E%94_%ED%94%84%EB%A6%B0%ED%8C%8502_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%B4%9B%EB%8C%80_%EB%AA%A8%EB%8D%B8%EB%A7%81%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%B4%9B%EB%8C%80_%EB%AA%A8%EB%8D%B8%EB%A7%81_%ED%81%AC%EA%B2%8C.jpg" alt="타이터스_촛대_모델링_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%B4%9B%EB%8C%80_%EB%AA%A8%EB%8D%B8%EB%A7%81%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%B4%9B%EB%8C%80_%EB%AA%A8%EB%8D%B8%EB%A7%81_%ED%81%AC%EA%B2%8C.jpg"><img loading="lazy" src="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%B4%9B%EB%8C%80_%EB%AA%A8%EB%8D%B8%EB%A7%8102%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%B4%9B%EB%8C%80_%EB%AA%A8%EB%8D%B8%EB%A7%8102_%ED%81%AC%EA%B2%8C.jpg" alt="타이터스_촛대_모델링02_크게" data-full="%EA%B9%80%EB%8F%84%EC%97%B0/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%B4%9B%EB%8C%80_%EB%AA%A8%EB%8D%B8%EB%A7%8102%20%ED%81%AC%EA%B2%8C/%ED%83%80%EC%9D%B4%ED%84%B0%EC%8A%A4_%EC%B4%9B%EB%8C%80_%EB%AA%A8%EB%8D%B8%EB%A7%8102_%ED%81%AC%EA%B2%8C.jpg"></div><h2>배연재</h2><div class="grid"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image1.jpg" alt="image1" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image1.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image11.jpg" alt="image11" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image11.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image13.jpg" alt="image13" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image13.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image14%201.jpg" alt="image14 1" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image14%201.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image14.jpg" alt="image14" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image14.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image15.jpg" alt="image15" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image15.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image16.jpg" alt="image16" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image16.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image18%201.jpg" alt="image18 1" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image18%201.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image18.jpg" alt="image18" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image18.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image19.jpg" alt="image19" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image19.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image2.jpg" alt="image2" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image2.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image20.jpg" alt="image20" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image20.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image21.jpg" alt="image21" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image21.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image22.jpg" alt="image22" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image22.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image23.jpg" alt="image23" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image23.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image24.jpg" alt="image24" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image24.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image25.jpg" alt="image25" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image25.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image26.jpg" alt="image26" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image26.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image27.jpg" alt="image27" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image27.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image28.jpg" alt="image28" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image28.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image29.jpg" alt="image29" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image29.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image3.jpg" alt="image3" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image3.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image30.jpg" alt="image30" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image30.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image31.jpg" alt="image31" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image31.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image33.jpg" alt="image33" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image33.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image4.jpg" alt="image4" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image4.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image5.jpg" alt="image5" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image5.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image6.jpg" alt="image6" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image6.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image7.jpg" alt="image7" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image7.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image8.jpg" alt="image8" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image8.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image9.jpg" alt="image9" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%8A%A4%ED%8A%9CF_%EB%8D%9C%EB%AF%B82_%EC%9D%98%EC%83%81%EA%B0%80%EB%A9%B4%EB%94%94%EC%9E%90%EC%9D%B8/image9.jpg"><img loading="lazy" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%9E%90%EC%A3%BC%EB%8B%AD%EC%95%A0%EB%B9%84/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2026-01-04_%EC%98%A4%EC%A0%84_10.58.46.jpg" alt="스크린샷_2026-01-04_오전_10.58.46" data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%9E%90%EC%A3%BC%EB%8B%AD%EC%95%A0%EB%B9%84/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2026-01-04_%EC%98%A4%EC%A0%84_10.58.46.jpg"><span class="tile"><video preload="metadata" src="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%9E%90%EC%A3%BC%EB%8B%AD%EC%95%A0%EB%B9%84/%EC%9E%90%EC%A3%BC%EB%8B%AD%EC%95%A0%EB%B9%84.mp4#t=0.5" muted data-full="%EB%B0%B0%EC%97%B0%EC%9E%AC/%EC%9E%90%EC%A3%BC%EB%8B%AD%EC%95%A0%EB%B9%84/%EC%9E%90%EC%A3%BC%EB%8B%AD%EC%95%A0%EB%B9%84.mp4" data-kind="video" data-name="자주닭애비"></video><span class="play">▶</span><span class="badge">영상</span></span></div><h2>장햇살</h2><div class="grid"><img loading="lazy" src="%EC%9E%A5%ED%96%87%EC%82%B4/%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%20F%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_%EC%9E%A5%ED%96%87%EC%82%B4/image1.jpg" alt="image1" data-full="%EC%9E%A5%ED%96%87%EC%82%B4/%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%20F%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_%EC%9E%A5%ED%96%87%EC%82%B4/image1.jpg"><img loading="lazy" src="%EC%9E%A5%ED%96%87%EC%82%B4/%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%20F%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_%EC%9E%A5%ED%96%87%EC%82%B4/image2.jpg" alt="image2" data-full="%EC%9E%A5%ED%96%87%EC%82%B4/%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%20F%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_%EC%9E%A5%ED%96%87%EC%82%B4/image2.jpg"><img loading="lazy" src="%EC%9E%A5%ED%96%87%EC%82%B4/%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%20F%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_%EC%9E%A5%ED%96%87%EC%82%B4/image3.jpg" alt="image3" data-full="%EC%9E%A5%ED%96%87%EC%82%B4/%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%20F%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_%EC%9E%A5%ED%96%87%EC%82%B4/image3.jpg"><img loading="lazy" src="%EC%9E%A5%ED%96%87%EC%82%B4/%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%20F%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_%EC%9E%A5%ED%96%87%EC%82%B4/image4.jpg" alt="image4" data-full="%EC%9E%A5%ED%96%87%EC%82%B4/%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%20F%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_%EC%9E%A5%ED%96%87%EC%82%B4/image4.jpg"><img loading="lazy" src="%EC%9E%A5%ED%96%87%EC%82%B4/%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%20F%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_%EC%9E%A5%ED%96%87%EC%82%B4/image5.jpg" alt="image5" data-full="%EC%9E%A5%ED%96%87%EC%82%B4/%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%20F%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_%EC%9E%A5%ED%96%87%EC%82%B4/image5.jpg"><img loading="lazy" src="%EC%9E%A5%ED%96%87%EC%82%B4/%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%20F%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_%EC%9E%A5%ED%96%87%EC%82%B4/image6.jpg" alt="image6" data-full="%EC%9E%A5%ED%96%87%EC%82%B4/%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%20F%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_%EC%9E%A5%ED%96%87%EC%82%B4/image6.jpg"><img loading="lazy" src="%EC%9E%A5%ED%96%87%EC%82%B4/%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%20F%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_%EC%9E%A5%ED%96%87%EC%82%B4/image7.jpg" alt="image7" data-full="%EC%9E%A5%ED%96%87%EC%82%B4/%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%20F%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_%EC%9E%A5%ED%96%87%EC%82%B4/image7.jpg"></div><h2>전진</h2><div class="grid"><img loading="lazy" src="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image1.jpg" alt="image1" data-full="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image1.jpg"><img loading="lazy" src="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image2.jpg" alt="image2" data-full="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image2.jpg"><img loading="lazy" src="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image3.jpg" alt="image3" data-full="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image3.jpg"><img loading="lazy" src="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image4.jpg" alt="image4" data-full="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image4.jpg"><img loading="lazy" src="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image5.jpg" alt="image5" data-full="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image5.jpg"><img loading="lazy" src="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image6.jpg" alt="image6" data-full="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image6.jpg"><img loading="lazy" src="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image7.jpg" alt="image7" data-full="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image7.jpg"><img loading="lazy" src="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image8.jpg" alt="image8" data-full="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image8.jpg"><img loading="lazy" src="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image9.jpg" alt="image9" data-full="%EC%A0%84%EC%A7%84/%EC%A0%84%EC%A7%84_2025%EB%85%84%202%ED%95%99%EA%B8%B0%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4F%20%EA%B2%B0%EA%B3%BC%EB%AC%BC_1224/image9.jpg"></div></div></main>
 <footer><div class="wrap">노션 아카이브에서 생성 · 이미지 JPEG 장변 1600px / 영상 H.264 장변 1280px</div></footer>
 
-<dialog id="lb"><div id="lbbody"></div></dialog>
+<div id="lb" role="dialog" aria-modal="true" aria-label="확대 보기">
+  <div id="stage"></div>
+  <div id="ind"><div id="dots"></div><div id="bar"><b></b></div><div id="num"></div></div>
+</div>
 <script>
-const lb=document.getElementById('lb'), body=document.getElementById('lbbody');
-const items=[...document.querySelectorAll('[data-full]')];
-let idx=0;
+const lb=document.getElementById('lb'), stage=document.getElementById('stage');
+const dots=document.getElementById('dots'), bar=document.getElementById('bar'),
+      barFill=bar.firstElementChild, num=document.getElementById('num');
 
-function show(i){
-  idx=(i+items.length)%items.length;
-  const el=items[idx];
-  body.className='';
-  body.innerHTML = el.dataset.kind==='video'
-    ? '<video controls autoplay playsinline src="'+el.dataset.full+'"></video>'
-    : '<img src="'+el.dataset.full+'" alt="">';
+// 화면에 그려진 순서 그대로. 한 장씩만 들고 있으므로 인덱스가 어긋날 수 없다 —
+// 예전에 3장 페이저로 만들었다가 '누른 것과 다른 그림'이 열려서 이 구조로 왔다.
+const items=[...document.querySelectorAll('[data-full]')].map(el=>(
+  {src:el.dataset.full, vid:el.dataset.kind==='video'}));
+const n=items.length;
+const DOT_MAX=15;                      // 이보다 많으면 점 대신 막대+숫자
+let idx=0, busy=false;
+
+function render(i){
+  const it=items[i];
+  stage.innerHTML = it.vid
+    ? '<video controls playsinline preload="metadata" src="'+it.src+'"></video>'
+    : '<img src="'+it.src+'" alt="">';
 }
-items.forEach((el,i)=>el.addEventListener('click',()=>{ show(i); lb.showModal(); }));
+function paintInd(){
+  num.textContent=(idx+1)+' / '+n;
+  if(n<=DOT_MAX){
+    bar.style.display='none';
+    dots.innerHTML=items.map((_,k)=>'<i'+(k===idx?' class="on"':'')+'></i>').join('');
+  } else {
+    dots.innerHTML='';
+    bar.style.display='';
+    barFill.style.width=((idx+1)/n*100).toFixed(2)+'%';
+  }
+}
+// 이웃을 미리 받아둔다 — 넘길 때 흰 화면이 안 보이게
+function preload(){
+  [idx+1, idx-1].forEach(k=>{
+    const it=items[(k+n)%n];
+    if(!it.vid) new Image().src=it.src;
+  });
+}
 
-// 이미지 누르면 원래 폭으로 확대/축소, 빈 곳 누르면 닫기
-body.addEventListener('click',e=>{
-  if(e.target.tagName==='IMG'){
-    e.stopPropagation();
-    e.target.classList.toggle('zoom');
-    body.classList.toggle('zoomed');
-  } else if(e.target===body){ lb.close(); }
-});
-lb.addEventListener('click',e=>{ if(e.target===lb) lb.close(); });
-lb.addEventListener('close',()=>{ body.innerHTML=''; });
+let pageY=0;
+const lock=()=>{ pageY=scrollY; document.documentElement.classList.add('locked'); };
+const unlock=()=>{ document.documentElement.classList.remove('locked'); scrollTo(0,pageY); };
+const isOpen=()=>lb.classList.contains('open');
 
-// 위아래 스와이프로 앞뒤 이동 (확대 상태에선 스크롤이 우선)
-let y0=null;
+function openAt(i){
+  idx=i; render(idx); paintInd(); lock();
+  lb.classList.add('open');
+  preload();
+}
+function close(){
+  const m=stage.firstElementChild;
+  if(m && m.tagName==='VIDEO') m.pause();
+  lb.classList.remove('open'); stage.innerHTML=''; unlock();
+}
+document.querySelectorAll('[data-full]').forEach((el,i)=>
+  el.addEventListener('click',()=>openAt(i)));
+
+// 넘김: 지금 장을 밀어내고, 다음 장을 반대편에서 들여온다.
+// 이미지는 디코드를 기다렸다 바꾸므로 전환 중에 빈 칸이 보이지 않는다.
+async function go(dir){
+  if(busy || n<2) return;
+  busy=true;
+  const out=stage.firstElementChild;
+  stage.classList.add('anim');
+  out.style.transform='translateY('+(-dir*60)+'vh)';
+  out.style.opacity='0';
+  const next=(idx+dir+n)%n, it=items[next];
+  if(!it.vid){ const pre=new Image(); pre.src=it.src; try{ await pre.decode(); }catch{} }
+  await new Promise(r=>setTimeout(r,180));
+  idx=next; render(idx); paintInd();
+  const inEl=stage.firstElementChild;
+  stage.classList.remove('anim');
+  inEl.style.transform='translateY('+(dir*60)+'vh)';
+  inEl.style.opacity='0';
+  inEl.getBoundingClientRect();          // 위치를 확정해야 다음 transition 이 먹는다
+  stage.classList.add('anim');
+  inEl.style.transform=''; inEl.style.opacity='1';
+  setTimeout(()=>{ busy=false; preload(); },360);
+}
+function spring(){                        // 문턱을 못 넘었을 때 제자리로
+  const m=stage.firstElementChild; if(!m) return;
+  stage.classList.add('anim');
+  m.style.transform=''; m.style.opacity='1';
+}
+
+// 손가락을 그대로 따라가고, 뗄 때 넘김/복귀를 정한다
+const THRESH=()=>Math.min(110, innerHeight*.15);
+let y0=null, dy=0, drag=false;
 lb.addEventListener('touchstart',e=>{
-  y0 = body.querySelector('.zoom') ? null : e.touches[0].clientY;
+  if(busy || e.touches.length>1){ y0=null; return; }
+  y0=e.touches[0].clientY; dy=0; drag=false;
+  stage.classList.remove('anim');
 },{passive:true});
-lb.addEventListener('touchend',e=>{
+lb.addEventListener('touchmove',e=>{
   if(y0===null) return;
-  const dy=e.changedTouches[0].clientY-y0; y0=null;
-  if(Math.abs(dy)>60) show(idx + (dy<0 ? 1 : -1));
+  dy=e.touches[0].clientY-y0;
+  if(!drag && Math.abs(dy)>6) drag=true;   // 탭과 섞이지 않게 6px 문턱
+  if(!drag) return;
+  e.preventDefault();
+  const m=stage.firstElementChild; if(!m) return;
+  m.style.transform='translateY('+dy+'px)';
+  m.style.opacity=String(Math.max(.3, 1-Math.abs(dy)/innerHeight));
+},{passive:false});
+lb.addEventListener('touchend',()=>{
+  if(y0===null) return;
+  const d=dy, moved=drag; y0=null;
+  if(!moved) return;                       // 탭은 click 이 처리
+  if(Math.abs(d)>THRESH()) go(d<0?1:-1); else spring();
 },{passive:true});
+lb.addEventListener('touchcancel',()=>{ if(drag) spring(); y0=null; },{passive:true});
 
-// 키보드도 같은 방향으로
+// 탭 = 닫기 (영상 컨트롤과 드래그 직후는 제외)
+lb.addEventListener('click',e=>{
+  if(drag){ drag=false; return; }
+  if(e.target.tagName==='VIDEO') return;
+  close();
+});
+
+// 데스크톱: 휠·키보드
+let wheelLock=false, wheelT=0;
+lb.addEventListener('wheel',e=>{
+  e.preventDefault();
+  clearTimeout(wheelT); wheelT=setTimeout(()=>{ wheelLock=false; },250);
+  if(wheelLock || Math.abs(e.deltaY)<25) return;
+  wheelLock=true; go(e.deltaY>0?1:-1);
+},{passive:false});
 addEventListener('keydown',e=>{
-  if(!lb.open) return;
-  if(e.key==='ArrowDown'||e.key==='ArrowRight') show(idx+1);
-  if(e.key==='ArrowUp'||e.key==='ArrowLeft') show(idx-1);
+  if(!isOpen()) return;
+  if(e.key==='Escape'){ close(); return; }
+  const dir={ArrowDown:1,ArrowRight:1,ArrowUp:-1,ArrowLeft:-1}[e.key];
+  if(dir){ e.preventDefault(); go(dir); }
 });
 </script>
 </body></html>

@@ -45,65 +45,168 @@ h2:first-of-type{margin-top:.25rem}
 .doc{display:flex;align-items:center;gap:.5rem;padding:.9rem;border:1px dashed var(--line);border-radius:8px}
 .back{display:inline-block;margin-bottom:1rem;color:var(--muted);font-size:.9rem}
 .back:hover{color:var(--accent)}
-/* 확대 화면은 테두리 없이 화면 전체를 쓴다 */
-dialog{border:0;padding:0;margin:0;background:transparent;
-  width:100vw;height:100dvh;max-width:100vw;max-height:100dvh;
-  overflow:auto;overscroll-behavior:contain}
-dialog::backdrop{background:rgba(0,0,0,.94)}
-#lbbody{min-height:100dvh;display:flex;align-items:center;justify-content:center}
-#lbbody.zoomed{align-items:flex-start}
-dialog img,dialog video{max-width:100vw;max-height:100dvh;width:auto;height:auto;
-  display:block;border-radius:0}
-/* 기본은 한 화면에 다 들어오게. 자세히 볼 땐 눌러서 원래 폭으로 확대. */
-dialog img{cursor:zoom-in}
-dialog img.zoom{max-width:none;max-height:none;width:100vw;cursor:zoom-out}
+/* ── 확대 보기 ─────────────────────────────────────────────────────────
+   <dialog> 를 쓰지 않는다 — 톱레이어·백드롭은 iOS 에서 동작이 들쭉날쭉하다.
+   평범한 fixed div + 직접 스크롤 잠금이 훨씬 예측 가능하다. */
+html.locked{overflow:hidden}          /* 뒤 페이지가 같이 스크롤되던 문제 */
+#lb{position:fixed;inset:0;z-index:10;display:none;background:rgba(0,0,0,.94);
+  touch-action:none;overscroll-behavior:contain;user-select:none}
+#lb.open{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0}}
+#stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+#stage img,#stage video{max-width:100vw;max-height:100dvh;width:auto;height:auto;
+  display:block;will-change:transform;-webkit-user-drag:none}
+/* 손을 뗐을 때만 애니메이션 — 끄는 동안은 손가락을 그대로 따라가야 한다 */
+#stage.anim img,#stage.anim video{transition:transform .34s cubic-bezier(.22,1,.36,1),
+  opacity .34s cubic-bezier(.22,1,.36,1)}
+/* 위치 표시: 장수가 적으면 점, 많으면 막대 + 숫자 */
+#ind{position:absolute;left:0;right:0;bottom:max(1rem,env(safe-area-inset-bottom));
+  display:flex;flex-direction:column;align-items:center;gap:.45rem;
+  pointer-events:none;color:#fff}
+#dots{display:flex;gap:6px}
+#dots i{width:6px;height:6px;border-radius:50%;background:#fff;opacity:.3}
+#dots i.on{opacity:.95}
+#bar{width:min(200px,44vw);height:2px;border-radius:2px;background:rgba(255,255,255,.25)}
+#bar b{display:block;height:100%;border-radius:2px;background:#fff;opacity:.9}
+#num{font-size:.72rem;letter-spacing:.1em;opacity:.7}
 footer{border-top:1px solid var(--line);padding:2rem 1.5rem;color:var(--muted);font-size:.85rem}
 </style></head><body><header><div class="wrap"><a class="back" href="../index.html">← 전체 학기</a><h1>2020-2</h1><div class="sub">한국예술종합학교 연극원 무대미술과 · 멀티미디어</div></div></header><main><div class="wrap"><h2>2020-2</h2><div class="grid"><img loading="lazy" src="2020-2/%EA%B9%80%EB%AF%BC%EC%A0%951.jpg" alt="김민정1" data-full="2020-2/%EA%B9%80%EB%AF%BC%EC%A0%951.jpg"></div><h2>edanim</h2><div class="path">2020-2</div><div class="grid"><img loading="lazy" src="2020-2/edanim/edanim.jpg" alt="edanim" data-full="2020-2/edanim/edanim.jpg"><img loading="lazy" src="2020-2/edanim%282%29/edanim%282%29.jpg" alt="edanim(2)" data-full="2020-2/edanim%282%29/edanim%282%29.jpg"><img loading="lazy" src="2020-2/edanim%283%29/edanim%283%29.jpg" alt="edanim(3)" data-full="2020-2/edanim%283%29/edanim%283%29.jpg"><img loading="lazy" src="2020-2/edanim%284%29/edanim%284%29.jpg" alt="edanim(4)" data-full="2020-2/edanim%284%29/edanim%284%29.jpg"><img loading="lazy" src="2020-2/edanim%285%29/edanim%285%29.jpg" alt="edanim(5)" data-full="2020-2/edanim%285%29/edanim%285%29.jpg"></div><h2>이미지 -Babel</h2><div class="path">2020-2</div><div class="grid"><img loading="lazy" src="2020-2/%EC%9D%B4%EB%AF%B8%EC%A7%80%20-Babel/Babel_.jpg" alt="Babel_" data-full="2020-2/%EC%9D%B4%EB%AF%B8%EC%A7%80%20-Babel/Babel_.jpg"></div><h2>김민정</h2><div class="grid"><img loading="lazy" src="2020-2/%EA%B9%80%EB%AF%BC%EC%A0%95%20%EC%A7%84%ED%96%89%EC%A4%91/2.jpg" alt="2" data-full="2020-2/%EA%B9%80%EB%AF%BC%EC%A0%95%20%EC%A7%84%ED%96%89%EC%A4%91/2.jpg"><img loading="lazy" src="2020-2/%EA%B9%80%EB%AF%BC%EC%A0%95%2C%20%EC%97%90%EB%8B%A4%20%EC%A7%84%ED%96%89%EC%A4%91/Untitled.jpg" alt="Untitled" data-full="2020-2/%EA%B9%80%EB%AF%BC%EC%A0%95%2C%20%EC%97%90%EB%8B%A4%20%EC%A7%84%ED%96%89%EC%A4%91/Untitled.jpg"><img loading="lazy" src="2020-2/%EA%B9%80%EB%AF%BC%EC%A0%952/3.jpg" alt="3" data-full="2020-2/%EA%B9%80%EB%AF%BC%EC%A0%952/3.jpg"></div><h2>김종은</h2><div class="grid"><img loading="lazy" src="2020-2/%EA%B9%80%EC%A2%85%EC%9D%80%20office%202/_office_2.jpg" alt="_office_2" data-full="2020-2/%EA%B9%80%EC%A2%85%EC%9D%80%20office%202/_office_2.jpg"><img loading="lazy" src="2020-2/%EA%B9%80%EC%A2%85%EC%9D%80%20parking%20lot/_parking_lot.jpg" alt="_parking_lot" data-full="2020-2/%EA%B9%80%EC%A2%85%EC%9D%80%20parking%20lot/_parking_lot.jpg"><img loading="lazy" src="2020-2/%EA%B9%80%EC%A2%85%EC%9D%80%20parking%20lot%202/_parking_lot_2.jpg" alt="_parking_lot_2" data-full="2020-2/%EA%B9%80%EC%A2%85%EC%9D%80%20parking%20lot%202/_parking_lot_2.jpg"><img loading="lazy" src="2020-2/%EA%B9%80%EC%A2%85%EC%9D%80%20parking%20lot%203/_parking_lot_3.jpg" alt="_parking_lot_3" data-full="2020-2/%EA%B9%80%EC%A2%85%EC%9D%80%20parking%20lot%203/_parking_lot_3.jpg"><img loading="lazy" src="2020-2/%EA%B9%80%EC%A2%85%EC%9D%80%20%EC%A1%B0%EA%B0%90%EB%8F%84/_.jpg" alt="_" data-full="2020-2/%EA%B9%80%EC%A2%85%EC%9D%80%20%EC%A1%B0%EA%B0%90%EB%8F%84/_.jpg"><img loading="lazy" src="2020-2/%EA%B9%80%EC%A2%85%EC%9D%80%20%ED%8F%89%EB%A9%B4%EB%8F%84/_.jpg" alt="_" data-full="2020-2/%EA%B9%80%EC%A2%85%EC%9D%80%20%ED%8F%89%EB%A9%B4%EB%8F%84/_.jpg"><span class="tile"><video preload="metadata" src="2020-2/%EC%98%81%EC%83%81%20%EA%B9%80%EC%A2%85%EC%9D%80%20office/__2.mp4#t=0.5" muted data-full="2020-2/%EC%98%81%EC%83%81%20%EA%B9%80%EC%A2%85%EC%9D%80%20office/__2.mp4" data-kind="video" data-name="__2"></video><span class="play">▶</span><span class="badge">영상</span></span><img loading="lazy" src="2020-2/%EC%98%81%EC%83%81%20%EA%B9%80%EC%A2%85%EC%9D%80%20office/_office.jpg" alt="_office" data-full="2020-2/%EC%98%81%EC%83%81%20%EA%B9%80%EC%A2%85%EC%9D%80%20office/_office.jpg"><img loading="lazy" src="2020-2/%EC%98%81%EC%83%81%20%EA%B9%80%EC%A2%85%EC%9D%80%20office%203123-0fac/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%98%81%EC%83%81%20%EA%B9%80%EC%A2%85%EC%9D%80%20office%203123-0fac/Untitled.jpg"><span class="tile"><video preload="metadata" src="2020-2/%EC%98%81%EC%83%81%20%EA%B9%80%EC%A2%85%EC%9D%80%20office%203123-0fac/_office.mp4#t=0.5" muted data-full="2020-2/%EC%98%81%EC%83%81%20%EA%B9%80%EC%A2%85%EC%9D%80%20office%203123-0fac/_office.mp4" data-kind="video" data-name="_office"></video><span class="play">▶</span><span class="badge">영상</span></span><span class="tile"><video preload="metadata" src="2020-2/%EC%98%81%EC%83%81%20%EA%B9%80%EC%A2%85%EC%9D%80%20parking%20lot/_parking_lot.mp4#t=0.5" muted data-full="2020-2/%EC%98%81%EC%83%81%20%EA%B9%80%EC%A2%85%EC%9D%80%20parking%20lot/_parking_lot.mp4" data-kind="video" data-name="_parking_lot"></video><span class="play">▶</span><span class="badge">영상</span></span><img loading="lazy" src="2020-2/%EC%98%81%EC%83%81%20%EA%B9%80%EC%A2%85%EC%9D%80%20%EC%A3%BC%EB%B0%A9/_.jpg" alt="_" data-full="2020-2/%EC%98%81%EC%83%81%20%EA%B9%80%EC%A2%85%EC%9D%80%20%EC%A3%BC%EB%B0%A9/_.jpg"><span class="tile"><video preload="metadata" src="2020-2/%EC%98%81%EC%83%81%20%EA%B9%80%EC%A2%85%EC%9D%80%20%EC%A3%BC%EB%B0%A9/_.mp4#t=0.5" muted data-full="2020-2/%EC%98%81%EC%83%81%20%EA%B9%80%EC%A2%85%EC%9D%80%20%EC%A3%BC%EB%B0%A9/_.mp4" data-kind="video" data-name="_"></video><span class="play">▶</span><span class="badge">영상</span></span></div><h2>아이</h2><div class="grid"><span class="tile"><video preload="metadata" src="2020-2/%EC%98%81%EC%83%81%20%EC%95%84%EC%9D%B4%20BANGKOK/BANGKOK_VER._1_HEAVY_RAIN.mp4#t=0.5" muted data-full="2020-2/%EC%98%81%EC%83%81%20%EC%95%84%EC%9D%B4%20BANGKOK/BANGKOK_VER._1_HEAVY_RAIN.mp4" data-kind="video" data-name="BANGKOK_VER._1_HEAVY_RAIN"></video><span class="play">▶</span><span class="badge">영상</span></span><span class="tile"><video preload="metadata" src="2020-2/%EC%98%81%EC%83%81%20%EC%95%84%EC%9D%B4%20BANGKOK/BANGKOK_VER._2_MUSIC.mp4#t=0.5" muted data-full="2020-2/%EC%98%81%EC%83%81%20%EC%95%84%EC%9D%B4%20BANGKOK/BANGKOK_VER._2_MUSIC.mp4" data-kind="video" data-name="BANGKOK_VER._2_MUSIC"></video><span class="play">▶</span><span class="badge">영상</span></span><img loading="lazy" src="2020-2/%EC%98%81%EC%83%81%20%EC%95%84%EC%9D%B4%20BANGKOK/Untitled%201.jpg" alt="Untitled 1" data-full="2020-2/%EC%98%81%EC%83%81%20%EC%95%84%EC%9D%B4%20BANGKOK/Untitled%201.jpg"><img loading="lazy" src="2020-2/%EC%98%81%EC%83%81%20%EC%95%84%EC%9D%B4%20BANGKOK/Untitled%202.jpg" alt="Untitled 2" data-full="2020-2/%EC%98%81%EC%83%81%20%EC%95%84%EC%9D%B4%20BANGKOK/Untitled%202.jpg"><img loading="lazy" src="2020-2/%EC%98%81%EC%83%81%20%EC%95%84%EC%9D%B4%20BANGKOK/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%98%81%EC%83%81%20%EC%95%84%EC%9D%B4%20BANGKOK/Untitled.jpg"></div><h2>윤승비</h2><div class="grid"><img loading="lazy" src="2020-2/%EC%9C%A4%EC%8A%B9%EB%B9%84/2.jpg" alt="2" data-full="2020-2/%EC%9C%A4%EC%8A%B9%EB%B9%84/2.jpg"><img loading="lazy" src="2020-2/%EC%9C%A4%EC%8A%B9%EB%B9%84%205604-6019/1.jpg" alt="1" data-full="2020-2/%EC%9C%A4%EC%8A%B9%EB%B9%84%205604-6019/1.jpg"><img loading="lazy" src="2020-2/%EC%9C%A4%EC%8A%B9%EB%B9%84%207e23-b015/3.jpg" alt="3" data-full="2020-2/%EC%9C%A4%EC%8A%B9%EB%B9%84%207e23-b015/3.jpg"><img loading="lazy" src="2020-2/%EC%9C%A4%EC%8A%B9%EB%B9%84%20cec3-ad52/4.jpg" alt="4" data-full="2020-2/%EC%9C%A4%EC%8A%B9%EB%B9%84%20cec3-ad52/4.jpg"><img loading="lazy" src="2020-2/%EC%9C%A4%EC%8A%B9%EB%B9%84%20%EC%82%B0%20%EC%A7%84%ED%96%89%EC%A4%91/20201211_104124_HDR.jpg" alt="20201211_104124_HDR" data-full="2020-2/%EC%9C%A4%EC%8A%B9%EB%B9%84%20%EC%82%B0%20%EC%A7%84%ED%96%89%EC%A4%91/20201211_104124_HDR.jpg"></div><h2>이윤진</h2><div class="grid"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%9C%A4%EC%A7%84%20%EA%B0%80%EB%A9%B4/IMG_8777.jpg" alt="IMG_8777" data-full="2020-2/%EC%9D%B4%EC%9C%A4%EC%A7%84%20%EA%B0%80%EB%A9%B4/IMG_8777.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%9C%A4%EC%A7%84%20%EA%B0%80%EB%A9%B4%20607d-eab0/IMG_8773.jpg" alt="IMG_8773" data-full="2020-2/%EC%9D%B4%EC%9C%A4%EC%A7%84%20%EA%B0%80%EB%A9%B4%20607d-eab0/IMG_8773.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%9C%A4%EC%A7%84%20%EA%B0%80%EB%A9%B4%208743-4cc1/IMG_8776.jpg" alt="IMG_8776" data-full="2020-2/%EC%9D%B4%EC%9C%A4%EC%A7%84%20%EA%B0%80%EB%A9%B4%208743-4cc1/IMG_8776.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%9C%A4%EC%A7%84%20%EC%8B%A0%EB%B0%9C/IMG_8768.jpg" alt="IMG_8768" data-full="2020-2/%EC%9D%B4%EC%9C%A4%EC%A7%84%20%EC%8B%A0%EB%B0%9C/IMG_8768.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%9C%A4%EC%A7%84%20%EC%8B%A0%EB%B0%9C%209ddf-3d04/FullSizeRender.jpg" alt="FullSizeRender" data-full="2020-2/%EC%9D%B4%EC%9C%A4%EC%A7%84%20%EC%8B%A0%EB%B0%9C%209ddf-3d04/FullSizeRender.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%9C%A4%EC%A7%84%20%EC%8B%A0%EB%B0%9C%20a0f9-1c43/IMG_8767.jpg" alt="IMG_8767" data-full="2020-2/%EC%9D%B4%EC%9C%A4%EC%A7%84%20%EC%8B%A0%EB%B0%9C%20a0f9-1c43/IMG_8767.jpg"></div><h2>이정아</h2><div class="grid"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%203924-cf11/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%203924-cf11/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%203f5a-084c/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%203f5a-084c/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%20440d-1f2c/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%20440d-1f2c/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%20482d-e973/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%20482d-e973/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%204fb3-f67b/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%204fb3-f67b/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%20601d-fed5/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%20601d-fed5/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%2065aa-2678/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%2065aa-2678/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%209884-e349/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%209884-e349/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%209a41-e6fe/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%209a41-e6fe/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%20a1f7-65ad/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%20a1f7-65ad/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%20b3b7-9220/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%20b3b7-9220/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%20bfb0-23a3/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%20bfb0-23a3/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%20f764-845f/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%201%20f764-845f/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%204557-2b50/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%204557-2b50/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%207e66-4282/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%207e66-4282/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%209fc7-6272/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%209fc7-6272/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%20a151-1a69/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%20a151-1a69/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%20dc63-608d/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%20dc63-608d/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%20eeff-7f5f/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%20eeff-7f5f/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%20f5ed-3717/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%20f5ed-3717/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%20f785-251a/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%20f785-251a/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%20fa0a-3e9c/Untitled.jpg" alt="Untitled" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%202%20fa0a-3e9c/Untitled.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%20%ED%81%AC%EB%A6%AC%EC%B3%90/IMG_6806.jpg" alt="IMG_6806" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%20%ED%81%AC%EB%A6%AC%EC%B3%90/IMG_6806.jpg"><img loading="lazy" src="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%20%ED%81%AC%EB%A6%AC%EC%B3%90%20bdfb-dfd9/IMG_6807.jpg" alt="IMG_6807" data-full="2020-2/%EC%9D%B4%EC%A0%95%EC%95%84%20%ED%81%AC%EB%A6%AC%EC%B3%90%20bdfb-dfd9/IMG_6807.jpg"></div><h2>최세헌</h2><div class="grid"><img loading="lazy" src="2020-2/%EC%B5%9C%EC%84%B8%ED%97%8C%201/IMG_6886.jpg" alt="IMG_6886" data-full="2020-2/%EC%B5%9C%EC%84%B8%ED%97%8C%201/IMG_6886.jpg"><img loading="lazy" src="2020-2/%EC%B5%9C%EC%84%B8%ED%97%8C%201%20b922-7a27/IMG_6889.jpg" alt="IMG_6889" data-full="2020-2/%EC%B5%9C%EC%84%B8%ED%97%8C%201%20b922-7a27/IMG_6889.jpg"><img loading="lazy" src="2020-2/%EC%B5%9C%EC%84%B8%ED%97%8C%201%20c127-be88/IMG_6890.jpg" alt="IMG_6890" data-full="2020-2/%EC%B5%9C%EC%84%B8%ED%97%8C%201%20c127-be88/IMG_6890.jpg"><img loading="lazy" src="2020-2/%EC%B5%9C%EC%84%B8%ED%97%8C%201%20c1b8-635c/IMG_6888.jpg" alt="IMG_6888" data-full="2020-2/%EC%B5%9C%EC%84%B8%ED%97%8C%201%20c1b8-635c/IMG_6888.jpg"><img loading="lazy" src="2020-2/%EC%B5%9C%EC%84%B8%ED%97%8C%202/IMG_6087.jpg" alt="IMG_6087" data-full="2020-2/%EC%B5%9C%EC%84%B8%ED%97%8C%202/IMG_6087.jpg"><img loading="lazy" src="2020-2/%EC%B5%9C%EC%84%B8%ED%97%8C%202%20fa1a-0318/IMG_6088.jpg" alt="IMG_6088" data-full="2020-2/%EC%B5%9C%EC%84%B8%ED%97%8C%202%20fa1a-0318/IMG_6088.jpg"></div></div></main>
 <footer><div class="wrap">노션 아카이브에서 생성 · 이미지 JPEG 장변 1600px / 영상 H.264 장변 1280px</div></footer>
 
-<dialog id="lb"><div id="lbbody"></div></dialog>
+<div id="lb" role="dialog" aria-modal="true" aria-label="확대 보기">
+  <div id="stage"></div>
+  <div id="ind"><div id="dots"></div><div id="bar"><b></b></div><div id="num"></div></div>
+</div>
 <script>
-const lb=document.getElementById('lb'), body=document.getElementById('lbbody');
-const items=[...document.querySelectorAll('[data-full]')];
-let idx=0;
+const lb=document.getElementById('lb'), stage=document.getElementById('stage');
+const dots=document.getElementById('dots'), bar=document.getElementById('bar'),
+      barFill=bar.firstElementChild, num=document.getElementById('num');
 
-function show(i){
-  idx=(i+items.length)%items.length;
-  const el=items[idx];
-  body.className='';
-  body.innerHTML = el.dataset.kind==='video'
-    ? '<video controls autoplay playsinline src="'+el.dataset.full+'"></video>'
-    : '<img src="'+el.dataset.full+'" alt="">';
+// 화면에 그려진 순서 그대로. 한 장씩만 들고 있으므로 인덱스가 어긋날 수 없다 —
+// 예전에 3장 페이저로 만들었다가 '누른 것과 다른 그림'이 열려서 이 구조로 왔다.
+const items=[...document.querySelectorAll('[data-full]')].map(el=>(
+  {src:el.dataset.full, vid:el.dataset.kind==='video'}));
+const n=items.length;
+const DOT_MAX=15;                      // 이보다 많으면 점 대신 막대+숫자
+let idx=0, busy=false;
+
+function render(i){
+  const it=items[i];
+  stage.innerHTML = it.vid
+    ? '<video controls playsinline preload="metadata" src="'+it.src+'"></video>'
+    : '<img src="'+it.src+'" alt="">';
 }
-items.forEach((el,i)=>el.addEventListener('click',()=>{ show(i); lb.showModal(); }));
+function paintInd(){
+  num.textContent=(idx+1)+' / '+n;
+  if(n<=DOT_MAX){
+    bar.style.display='none';
+    dots.innerHTML=items.map((_,k)=>'<i'+(k===idx?' class="on"':'')+'></i>').join('');
+  } else {
+    dots.innerHTML='';
+    bar.style.display='';
+    barFill.style.width=((idx+1)/n*100).toFixed(2)+'%';
+  }
+}
+// 이웃을 미리 받아둔다 — 넘길 때 흰 화면이 안 보이게
+function preload(){
+  [idx+1, idx-1].forEach(k=>{
+    const it=items[(k+n)%n];
+    if(!it.vid) new Image().src=it.src;
+  });
+}
 
-// 이미지 누르면 원래 폭으로 확대/축소, 빈 곳 누르면 닫기
-body.addEventListener('click',e=>{
-  if(e.target.tagName==='IMG'){
-    e.stopPropagation();
-    e.target.classList.toggle('zoom');
-    body.classList.toggle('zoomed');
-  } else if(e.target===body){ lb.close(); }
-});
-lb.addEventListener('click',e=>{ if(e.target===lb) lb.close(); });
-lb.addEventListener('close',()=>{ body.innerHTML=''; });
+let pageY=0;
+const lock=()=>{ pageY=scrollY; document.documentElement.classList.add('locked'); };
+const unlock=()=>{ document.documentElement.classList.remove('locked'); scrollTo(0,pageY); };
+const isOpen=()=>lb.classList.contains('open');
 
-// 위아래 스와이프로 앞뒤 이동 (확대 상태에선 스크롤이 우선)
-let y0=null;
+function openAt(i){
+  idx=i; render(idx); paintInd(); lock();
+  lb.classList.add('open');
+  preload();
+}
+function close(){
+  const m=stage.firstElementChild;
+  if(m && m.tagName==='VIDEO') m.pause();
+  lb.classList.remove('open'); stage.innerHTML=''; unlock();
+}
+document.querySelectorAll('[data-full]').forEach((el,i)=>
+  el.addEventListener('click',()=>openAt(i)));
+
+// 넘김: 지금 장을 밀어내고, 다음 장을 반대편에서 들여온다.
+// 이미지는 디코드를 기다렸다 바꾸므로 전환 중에 빈 칸이 보이지 않는다.
+async function go(dir){
+  if(busy || n<2) return;
+  busy=true;
+  const out=stage.firstElementChild;
+  stage.classList.add('anim');
+  out.style.transform='translateY('+(-dir*60)+'vh)';
+  out.style.opacity='0';
+  const next=(idx+dir+n)%n, it=items[next];
+  if(!it.vid){ const pre=new Image(); pre.src=it.src; try{ await pre.decode(); }catch{} }
+  await new Promise(r=>setTimeout(r,180));
+  idx=next; render(idx); paintInd();
+  const inEl=stage.firstElementChild;
+  stage.classList.remove('anim');
+  inEl.style.transform='translateY('+(dir*60)+'vh)';
+  inEl.style.opacity='0';
+  inEl.getBoundingClientRect();          // 위치를 확정해야 다음 transition 이 먹는다
+  stage.classList.add('anim');
+  inEl.style.transform=''; inEl.style.opacity='1';
+  setTimeout(()=>{ busy=false; preload(); },360);
+}
+function spring(){                        // 문턱을 못 넘었을 때 제자리로
+  const m=stage.firstElementChild; if(!m) return;
+  stage.classList.add('anim');
+  m.style.transform=''; m.style.opacity='1';
+}
+
+// 손가락을 그대로 따라가고, 뗄 때 넘김/복귀를 정한다
+const THRESH=()=>Math.min(110, innerHeight*.15);
+let y0=null, dy=0, drag=false;
 lb.addEventListener('touchstart',e=>{
-  y0 = body.querySelector('.zoom') ? null : e.touches[0].clientY;
+  if(busy || e.touches.length>1){ y0=null; return; }
+  y0=e.touches[0].clientY; dy=0; drag=false;
+  stage.classList.remove('anim');
 },{passive:true});
-lb.addEventListener('touchend',e=>{
+lb.addEventListener('touchmove',e=>{
   if(y0===null) return;
-  const dy=e.changedTouches[0].clientY-y0; y0=null;
-  if(Math.abs(dy)>60) show(idx + (dy<0 ? 1 : -1));
+  dy=e.touches[0].clientY-y0;
+  if(!drag && Math.abs(dy)>6) drag=true;   // 탭과 섞이지 않게 6px 문턱
+  if(!drag) return;
+  e.preventDefault();
+  const m=stage.firstElementChild; if(!m) return;
+  m.style.transform='translateY('+dy+'px)';
+  m.style.opacity=String(Math.max(.3, 1-Math.abs(dy)/innerHeight));
+},{passive:false});
+lb.addEventListener('touchend',()=>{
+  if(y0===null) return;
+  const d=dy, moved=drag; y0=null;
+  if(!moved) return;                       // 탭은 click 이 처리
+  if(Math.abs(d)>THRESH()) go(d<0?1:-1); else spring();
 },{passive:true});
+lb.addEventListener('touchcancel',()=>{ if(drag) spring(); y0=null; },{passive:true});
 
-// 키보드도 같은 방향으로
+// 탭 = 닫기 (영상 컨트롤과 드래그 직후는 제외)
+lb.addEventListener('click',e=>{
+  if(drag){ drag=false; return; }
+  if(e.target.tagName==='VIDEO') return;
+  close();
+});
+
+// 데스크톱: 휠·키보드
+let wheelLock=false, wheelT=0;
+lb.addEventListener('wheel',e=>{
+  e.preventDefault();
+  clearTimeout(wheelT); wheelT=setTimeout(()=>{ wheelLock=false; },250);
+  if(wheelLock || Math.abs(e.deltaY)<25) return;
+  wheelLock=true; go(e.deltaY>0?1:-1);
+},{passive:false});
 addEventListener('keydown',e=>{
-  if(!lb.open) return;
-  if(e.key==='ArrowDown'||e.key==='ArrowRight') show(idx+1);
-  if(e.key==='ArrowUp'||e.key==='ArrowLeft') show(idx-1);
+  if(!isOpen()) return;
+  if(e.key==='Escape'){ close(); return; }
+  const dir={ArrowDown:1,ArrowRight:1,ArrowUp:-1,ArrowLeft:-1}[e.key];
+  if(dir){ e.preventDefault(); go(dir); }
 });
 </script>
 </body></html>
