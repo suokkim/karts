@@ -45,32 +45,65 @@ h2:first-of-type{margin-top:.25rem}
 .doc{display:flex;align-items:center;gap:.5rem;padding:.9rem;border:1px dashed var(--line);border-radius:8px}
 .back{display:inline-block;margin-bottom:1rem;color:var(--muted);font-size:.9rem}
 .back:hover{color:var(--accent)}
-dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:96vh;overflow:auto}
-dialog::backdrop{background:rgba(0,0,0,.88)}
-dialog video{max-width:96vw;max-height:92vh;display:block;margin:auto;border-radius:6px}
-/* 기본은 한 화면에 다 들어오게. 세로로 긴 문서는 클릭하면 폭에 맞춰 확대(스크롤). */
-dialog img{max-width:96vw;max-height:92vh;width:auto;height:auto;display:block;margin:auto;
-  border-radius:6px;cursor:zoom-in}
-dialog img.zoom{max-width:none;max-height:none;width:96vw;cursor:zoom-out}
+/* 확대 화면은 테두리 없이 화면 전체를 쓴다 */
+dialog{border:0;padding:0;margin:0;background:transparent;
+  width:100vw;height:100dvh;max-width:100vw;max-height:100dvh;
+  overflow:auto;overscroll-behavior:contain}
+dialog::backdrop{background:rgba(0,0,0,.94)}
+#lbbody{min-height:100dvh;display:flex;align-items:center;justify-content:center}
+#lbbody.zoomed{align-items:flex-start}
+dialog img,dialog video{max-width:100vw;max-height:100dvh;width:auto;height:auto;
+  display:block;border-radius:0}
+/* 기본은 한 화면에 다 들어오게. 자세히 볼 땐 눌러서 원래 폭으로 확대. */
+dialog img{cursor:zoom-in}
+dialog img.zoom{max-width:none;max-height:none;width:100vw;cursor:zoom-out}
 footer{border-top:1px solid var(--line);padding:2rem 1.5rem;color:var(--muted);font-size:.85rem}
 </style></head><body><header><div class="wrap"><a class="back" href="../index.html">← 전체 학기</a><h1>2018-2</h1><div class="sub">한국예술종합학교 연극원 무대미술과 · 멀티미디어</div></div></header><main><div class="wrap"><h2>제목 없음</h2><div class="path">2018-2</div><div class="grid"><img loading="lazy" src="2018-2/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/256A2964.jpg" alt="256A2964" data-full="2018-2/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/256A2964.jpg"><img loading="lazy" src="2018-2/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%200685-ef2d/256A2969.jpg" alt="256A2969" data-full="2018-2/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%200685-ef2d/256A2969.jpg"><img loading="lazy" src="2018-2/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20689b-e617/256A2968.jpg" alt="256A2968" data-full="2018-2/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20689b-e617/256A2968.jpg"><img loading="lazy" src="2018-2/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%2088be-bd04/256A2970.jpg" alt="256A2970" data-full="2018-2/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%2088be-bd04/256A2970.jpg"><img loading="lazy" src="2018-2/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20f7db-1222/256A2967.jpg" alt="256A2967" data-full="2018-2/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20f7db-1222/256A2967.jpg"></div><h2>김민우</h2><div class="grid"><img loading="lazy" src="2018-2/%EA%B9%80%EB%AF%BC%EC%9A%B01/256A2928.jpg" alt="256A2928" data-full="2018-2/%EA%B9%80%EB%AF%BC%EC%9A%B01/256A2928.jpg"><img loading="lazy" src="2018-2/%EA%B9%80%EB%AF%BC%EC%9A%B02/256A2931.jpg" alt="256A2931" data-full="2018-2/%EA%B9%80%EB%AF%BC%EC%9A%B02/256A2931.jpg"><img loading="lazy" src="2018-2/%EA%B9%80%EB%AF%BC%EC%9A%B03/256A2933.jpg" alt="256A2933" data-full="2018-2/%EA%B9%80%EB%AF%BC%EC%9A%B03/256A2933.jpg"><img loading="lazy" src="2018-2/%EA%B9%80%EB%AF%BC%EC%9A%B04/256A2934.jpg" alt="256A2934" data-full="2018-2/%EA%B9%80%EB%AF%BC%EC%9A%B04/256A2934.jpg"><img loading="lazy" src="2018-2/%EA%B9%80%EB%AF%BC%EC%9A%B05/256A2929.jpg" alt="256A2929" data-full="2018-2/%EA%B9%80%EB%AF%BC%EC%9A%B05/256A2929.jpg"><img loading="lazy" src="2018-2/%EA%B9%80%EB%AF%BC%EC%9A%B06/256A2935.jpg" alt="256A2935" data-full="2018-2/%EA%B9%80%EB%AF%BC%EC%9A%B06/256A2935.jpg"><img loading="lazy" src="2018-2/%EA%B9%80%EB%AF%BC%EC%9A%B07/256A2930.jpg" alt="256A2930" data-full="2018-2/%EA%B9%80%EB%AF%BC%EC%9A%B07/256A2930.jpg"></div><h2>신승열</h2><div class="grid"><img loading="lazy" src="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B41/256A2943.jpg" alt="256A2943" data-full="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B41/256A2943.jpg"><img loading="lazy" src="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B42/256A2944.jpg" alt="256A2944" data-full="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B42/256A2944.jpg"><img loading="lazy" src="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B43/256A2948.jpg" alt="256A2948" data-full="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B43/256A2948.jpg"><img loading="lazy" src="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B44/256A2950.jpg" alt="256A2950" data-full="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B44/256A2950.jpg"><img loading="lazy" src="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B45/256A2954.jpg" alt="256A2954" data-full="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B45/256A2954.jpg"><img loading="lazy" src="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B46/256A2955.jpg" alt="256A2955" data-full="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B46/256A2955.jpg"><img loading="lazy" src="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B47/256A2958.jpg" alt="256A2958" data-full="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B47/256A2958.jpg"><img loading="lazy" src="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B48/256A2957.jpg" alt="256A2957" data-full="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B48/256A2957.jpg"><img loading="lazy" src="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B49/256A2961.jpg" alt="256A2961" data-full="2018-2/%EC%8B%A0%EC%8A%B9%EC%97%B49/256A2961.jpg"></div><h2>이태양</h2><div class="grid"><img loading="lazy" src="2018-2/%EC%9D%B4%ED%83%9C%EC%96%911/256A2942.jpg" alt="256A2942" data-full="2018-2/%EC%9D%B4%ED%83%9C%EC%96%911/256A2942.jpg"></div></div></main>
 <footer><div class="wrap">노션 아카이브에서 생성 · 이미지 JPEG 장변 1600px / 영상 H.264 장변 1280px</div></footer>
 
 <dialog id="lb"><div id="lbbody"></div></dialog>
 <script>
-const lb=document.getElementById('lb'),body=document.getElementById('lbbody');
-document.querySelectorAll('[data-full]').forEach(el=>el.addEventListener('click',()=>{
-  const src=el.dataset.full, isVid=el.dataset.kind==='video';
-  body.innerHTML = isVid
-    ? '<video controls autoplay playsinline src="'+src+'"></video>'
-    : '<img src="'+src+'" alt="">';
-  lb.showModal();
-}));
-// 이미지 클릭 = 원래 폭으로 확대/축소, 바깥 클릭 = 닫기
+const lb=document.getElementById('lb'), body=document.getElementById('lbbody');
+const items=[...document.querySelectorAll('[data-full]')];
+let idx=0;
+
+function show(i){
+  idx=(i+items.length)%items.length;
+  const el=items[idx];
+  body.className='';
+  body.innerHTML = el.dataset.kind==='video'
+    ? '<video controls autoplay playsinline src="'+el.dataset.full+'"></video>'
+    : '<img src="'+el.dataset.full+'" alt="">';
+}
+items.forEach((el,i)=>el.addEventListener('click',()=>{ show(i); lb.showModal(); }));
+
+// 이미지 누르면 원래 폭으로 확대/축소, 빈 곳 누르면 닫기
 body.addEventListener('click',e=>{
-  if(e.target.tagName==='IMG'){ e.stopPropagation(); e.target.classList.toggle('zoom'); }
+  if(e.target.tagName==='IMG'){
+    e.stopPropagation();
+    e.target.classList.toggle('zoom');
+    body.classList.toggle('zoomed');
+  } else if(e.target===body){ lb.close(); }
 });
-lb.addEventListener('click',e=>{if(e.target===lb) lb.close()});
-lb.addEventListener('close',()=>{body.innerHTML=''});
+lb.addEventListener('click',e=>{ if(e.target===lb) lb.close(); });
+lb.addEventListener('close',()=>{ body.innerHTML=''; });
+
+// 위아래 스와이프로 앞뒤 이동 (확대 상태에선 스크롤이 우선)
+let y0=null;
+lb.addEventListener('touchstart',e=>{
+  y0 = body.querySelector('.zoom') ? null : e.touches[0].clientY;
+},{passive:true});
+lb.addEventListener('touchend',e=>{
+  if(y0===null) return;
+  const dy=e.changedTouches[0].clientY-y0; y0=null;
+  if(Math.abs(dy)>60) show(idx + (dy<0 ? 1 : -1));
+},{passive:true});
+
+// 키보드도 같은 방향으로
+addEventListener('keydown',e=>{
+  if(!lb.open) return;
+  if(e.key==='ArrowDown'||e.key==='ArrowRight') show(idx+1);
+  if(e.key==='ArrowUp'||e.key==='ArrowLeft') show(idx-1);
+});
 </script>
 </body></html>

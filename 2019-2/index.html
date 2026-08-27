@@ -45,32 +45,65 @@ h2:first-of-type{margin-top:.25rem}
 .doc{display:flex;align-items:center;gap:.5rem;padding:.9rem;border:1px dashed var(--line);border-radius:8px}
 .back{display:inline-block;margin-bottom:1rem;color:var(--muted);font-size:.9rem}
 .back:hover{color:var(--accent)}
-dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:96vh;overflow:auto}
-dialog::backdrop{background:rgba(0,0,0,.88)}
-dialog video{max-width:96vw;max-height:92vh;display:block;margin:auto;border-radius:6px}
-/* 기본은 한 화면에 다 들어오게. 세로로 긴 문서는 클릭하면 폭에 맞춰 확대(스크롤). */
-dialog img{max-width:96vw;max-height:92vh;width:auto;height:auto;display:block;margin:auto;
-  border-radius:6px;cursor:zoom-in}
-dialog img.zoom{max-width:none;max-height:none;width:96vw;cursor:zoom-out}
+/* 확대 화면은 테두리 없이 화면 전체를 쓴다 */
+dialog{border:0;padding:0;margin:0;background:transparent;
+  width:100vw;height:100dvh;max-width:100vw;max-height:100dvh;
+  overflow:auto;overscroll-behavior:contain}
+dialog::backdrop{background:rgba(0,0,0,.94)}
+#lbbody{min-height:100dvh;display:flex;align-items:center;justify-content:center}
+#lbbody.zoomed{align-items:flex-start}
+dialog img,dialog video{max-width:100vw;max-height:100dvh;width:auto;height:auto;
+  display:block;border-radius:0}
+/* 기본은 한 화면에 다 들어오게. 자세히 볼 땐 눌러서 원래 폭으로 확대. */
+dialog img{cursor:zoom-in}
+dialog img.zoom{max-width:none;max-height:none;width:100vw;cursor:zoom-out}
 footer{border-top:1px solid var(--line);padding:2rem 1.5rem;color:var(--muted);font-size:.85rem}
 </style></head><body><header><div class="wrap"><a class="back" href="../index.html">← 전체 학기</a><h1>2019-2</h1><div class="sub">한국예술종합학교 연극원 무대미술과 · 멀티미디어</div></div></header><main><div class="wrap"><h2>김재란</h2><div class="grid"><img loading="lazy" src="2019-2/%EA%B9%80%EC%9E%AC%EB%9E%801/5A3C46A3-5BB2-4B0A-8365-5B29D02D2E18_1_105_c.jpg" alt="5A3C46A3-5BB2-4B0A-8365-5B29D02D2E18_1_105_c" data-full="2019-2/%EA%B9%80%EC%9E%AC%EB%9E%801/5A3C46A3-5BB2-4B0A-8365-5B29D02D2E18_1_105_c.jpg"><img loading="lazy" src="2019-2/%EA%B9%80%EC%9E%AC%EB%9E%802/3331C3F7-596E-4F85-92F9-8AE4CF8A932B_1_105_c.jpg" alt="3331C3F7-596E-4F85-92F9-8AE4CF8A932B_1_105_c" data-full="2019-2/%EA%B9%80%EC%9E%AC%EB%9E%802/3331C3F7-596E-4F85-92F9-8AE4CF8A932B_1_105_c.jpg"><img loading="lazy" src="2019-2/%EA%B9%80%EC%9E%AC%EB%9E%803/C362176A-5235-4283-A76E-A93D34E4986F_1_105_c.jpg" alt="C362176A-5235-4283-A76E-A93D34E4986F_1_105_c" data-full="2019-2/%EA%B9%80%EC%9E%AC%EB%9E%803/C362176A-5235-4283-A76E-A93D34E4986F_1_105_c.jpg"><img loading="lazy" src="2019-2/%EA%B9%80%EC%9E%AC%EB%9E%804/3D6641F2-0273-4050-A0F4-C20403D3E8C0_1_105_c.jpg" alt="3D6641F2-0273-4050-A0F4-C20403D3E8C0_1_105_c" data-full="2019-2/%EA%B9%80%EC%9E%AC%EB%9E%804/3D6641F2-0273-4050-A0F4-C20403D3E8C0_1_105_c.jpg"></div><h2>아이</h2><div class="grid"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B41/20191213_140700.jpg" alt="20191213_140700" data-full="2019-2/%EC%95%84%EC%9D%B41/20191213_140700.jpg"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B410/KakaoTalk_20191221_205741218_10.jpg" alt="KakaoTalk_20191221_205741218_10" data-full="2019-2/%EC%95%84%EC%9D%B410/KakaoTalk_20191221_205741218_10.jpg"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B411/KakaoTalk_20191221_205741218_11.jpg" alt="KakaoTalk_20191221_205741218_11" data-full="2019-2/%EC%95%84%EC%9D%B411/KakaoTalk_20191221_205741218_11.jpg"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B412/KakaoTalk_20191221_205741218_12.jpg" alt="KakaoTalk_20191221_205741218_12" data-full="2019-2/%EC%95%84%EC%9D%B412/KakaoTalk_20191221_205741218_12.jpg"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B413/KakaoTalk_20191221_205741218_13.jpg" alt="KakaoTalk_20191221_205741218_13" data-full="2019-2/%EC%95%84%EC%9D%B413/KakaoTalk_20191221_205741218_13.jpg"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B414/KakaoTalk_20191221_205741218_14.jpg" alt="KakaoTalk_20191221_205741218_14" data-full="2019-2/%EC%95%84%EC%9D%B414/KakaoTalk_20191221_205741218_14.jpg"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B415/KakaoTalk_20191221_205741218_16.jpg" alt="KakaoTalk_20191221_205741218_16" data-full="2019-2/%EC%95%84%EC%9D%B415/KakaoTalk_20191221_205741218_16.jpg"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B416/KakaoTalk_20191221_205741218_18.jpg" alt="KakaoTalk_20191221_205741218_18" data-full="2019-2/%EC%95%84%EC%9D%B416/KakaoTalk_20191221_205741218_18.jpg"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B417/KakaoTalk_20191221_205741218_23.jpg" alt="KakaoTalk_20191221_205741218_23" data-full="2019-2/%EC%95%84%EC%9D%B417/KakaoTalk_20191221_205741218_23.jpg"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B42/20191213_141047.jpg" alt="20191213_141047" data-full="2019-2/%EC%95%84%EC%9D%B42/20191213_141047.jpg"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B43/20191213_141123.jpg" alt="20191213_141123" data-full="2019-2/%EC%95%84%EC%9D%B43/20191213_141123.jpg"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B44/20191213_141144.jpg" alt="20191213_141144" data-full="2019-2/%EC%95%84%EC%9D%B44/20191213_141144.jpg"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B45/20191213_141253.jpg" alt="20191213_141253" data-full="2019-2/%EC%95%84%EC%9D%B45/20191213_141253.jpg"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B46/876009EB-A855-44B4-9FF8-115A6D2E746F_1_105_c.jpg" alt="876009EB-A855-44B4-9FF8-115A6D2E746F_1_105_c" data-full="2019-2/%EC%95%84%EC%9D%B46/876009EB-A855-44B4-9FF8-115A6D2E746F_1_105_c.jpg"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B47/092E79AF-F0CB-4619-AA47-35F828F690EF_1_105_c.jpg" alt="092E79AF-F0CB-4619-AA47-35F828F690EF_1_105_c" data-full="2019-2/%EC%95%84%EC%9D%B47/092E79AF-F0CB-4619-AA47-35F828F690EF_1_105_c.jpg"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B48/KakaoTalk_20191221_205741218_05.jpg" alt="KakaoTalk_20191221_205741218_05" data-full="2019-2/%EC%95%84%EC%9D%B48/KakaoTalk_20191221_205741218_05.jpg"><img loading="lazy" src="2019-2/%EC%95%84%EC%9D%B49/KakaoTalk_20191221_205741218_09.jpg" alt="KakaoTalk_20191221_205741218_09" data-full="2019-2/%EC%95%84%EC%9D%B49/KakaoTalk_20191221_205741218_09.jpg"></div><h2>안연수</h2><div class="grid"><img loading="lazy" src="2019-2/%EC%95%88%EC%97%B0%EC%88%981/C2DC01E3-B6A3-4505-ADEE-6CCA46B524C4_1_105_c.jpg" alt="C2DC01E3-B6A3-4505-ADEE-6CCA46B524C4_1_105_c" data-full="2019-2/%EC%95%88%EC%97%B0%EC%88%981/C2DC01E3-B6A3-4505-ADEE-6CCA46B524C4_1_105_c.jpg"><img loading="lazy" src="2019-2/%EC%95%88%EC%97%B0%EC%88%982/A0F8ED9A-862F-4FDD-B6DE-FFF884C32132_1_105_c.jpg" alt="A0F8ED9A-862F-4FDD-B6DE-FFF884C32132_1_105_c" data-full="2019-2/%EC%95%88%EC%97%B0%EC%88%982/A0F8ED9A-862F-4FDD-B6DE-FFF884C32132_1_105_c.jpg"><img loading="lazy" src="2019-2/%EC%95%88%EC%97%B0%EC%88%983/9E70F3CD-3E79-4E0A-BA00-C9874F0A01AB_1_105_c.jpg" alt="9E70F3CD-3E79-4E0A-BA00-C9874F0A01AB_1_105_c" data-full="2019-2/%EC%95%88%EC%97%B0%EC%88%983/9E70F3CD-3E79-4E0A-BA00-C9874F0A01AB_1_105_c.jpg"></div></div></main>
 <footer><div class="wrap">노션 아카이브에서 생성 · 이미지 JPEG 장변 1600px / 영상 H.264 장변 1280px</div></footer>
 
 <dialog id="lb"><div id="lbbody"></div></dialog>
 <script>
-const lb=document.getElementById('lb'),body=document.getElementById('lbbody');
-document.querySelectorAll('[data-full]').forEach(el=>el.addEventListener('click',()=>{
-  const src=el.dataset.full, isVid=el.dataset.kind==='video';
-  body.innerHTML = isVid
-    ? '<video controls autoplay playsinline src="'+src+'"></video>'
-    : '<img src="'+src+'" alt="">';
-  lb.showModal();
-}));
-// 이미지 클릭 = 원래 폭으로 확대/축소, 바깥 클릭 = 닫기
+const lb=document.getElementById('lb'), body=document.getElementById('lbbody');
+const items=[...document.querySelectorAll('[data-full]')];
+let idx=0;
+
+function show(i){
+  idx=(i+items.length)%items.length;
+  const el=items[idx];
+  body.className='';
+  body.innerHTML = el.dataset.kind==='video'
+    ? '<video controls autoplay playsinline src="'+el.dataset.full+'"></video>'
+    : '<img src="'+el.dataset.full+'" alt="">';
+}
+items.forEach((el,i)=>el.addEventListener('click',()=>{ show(i); lb.showModal(); }));
+
+// 이미지 누르면 원래 폭으로 확대/축소, 빈 곳 누르면 닫기
 body.addEventListener('click',e=>{
-  if(e.target.tagName==='IMG'){ e.stopPropagation(); e.target.classList.toggle('zoom'); }
+  if(e.target.tagName==='IMG'){
+    e.stopPropagation();
+    e.target.classList.toggle('zoom');
+    body.classList.toggle('zoomed');
+  } else if(e.target===body){ lb.close(); }
 });
-lb.addEventListener('click',e=>{if(e.target===lb) lb.close()});
-lb.addEventListener('close',()=>{body.innerHTML=''});
+lb.addEventListener('click',e=>{ if(e.target===lb) lb.close(); });
+lb.addEventListener('close',()=>{ body.innerHTML=''; });
+
+// 위아래 스와이프로 앞뒤 이동 (확대 상태에선 스크롤이 우선)
+let y0=null;
+lb.addEventListener('touchstart',e=>{
+  y0 = body.querySelector('.zoom') ? null : e.touches[0].clientY;
+},{passive:true});
+lb.addEventListener('touchend',e=>{
+  if(y0===null) return;
+  const dy=e.changedTouches[0].clientY-y0; y0=null;
+  if(Math.abs(dy)>60) show(idx + (dy<0 ? 1 : -1));
+},{passive:true});
+
+// 키보드도 같은 방향으로
+addEventListener('keydown',e=>{
+  if(!lb.open) return;
+  if(e.key==='ArrowDown'||e.key==='ArrowRight') show(idx+1);
+  if(e.key==='ArrowUp'||e.key==='ArrowLeft') show(idx-1);
+});
 </script>
 </body></html>

@@ -45,32 +45,65 @@ h2:first-of-type{margin-top:.25rem}
 .doc{display:flex;align-items:center;gap:.5rem;padding:.9rem;border:1px dashed var(--line);border-radius:8px}
 .back{display:inline-block;margin-bottom:1rem;color:var(--muted);font-size:.9rem}
 .back:hover{color:var(--accent)}
-dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:96vh;overflow:auto}
-dialog::backdrop{background:rgba(0,0,0,.88)}
-dialog video{max-width:96vw;max-height:92vh;display:block;margin:auto;border-radius:6px}
-/* 기본은 한 화면에 다 들어오게. 세로로 긴 문서는 클릭하면 폭에 맞춰 확대(스크롤). */
-dialog img{max-width:96vw;max-height:92vh;width:auto;height:auto;display:block;margin:auto;
-  border-radius:6px;cursor:zoom-in}
-dialog img.zoom{max-width:none;max-height:none;width:96vw;cursor:zoom-out}
+/* 확대 화면은 테두리 없이 화면 전체를 쓴다 */
+dialog{border:0;padding:0;margin:0;background:transparent;
+  width:100vw;height:100dvh;max-width:100vw;max-height:100dvh;
+  overflow:auto;overscroll-behavior:contain}
+dialog::backdrop{background:rgba(0,0,0,.94)}
+#lbbody{min-height:100dvh;display:flex;align-items:center;justify-content:center}
+#lbbody.zoomed{align-items:flex-start}
+dialog img,dialog video{max-width:100vw;max-height:100dvh;width:auto;height:auto;
+  display:block;border-radius:0}
+/* 기본은 한 화면에 다 들어오게. 자세히 볼 땐 눌러서 원래 폭으로 확대. */
+dialog img{cursor:zoom-in}
+dialog img.zoom{max-width:none;max-height:none;width:100vw;cursor:zoom-out}
 footer{border-top:1px solid var(--line);padding:2rem 1.5rem;color:var(--muted);font-size:.85rem}
 </style></head><body><header><div class="wrap"><a class="back" href="../index.html">← 전체 학기</a><h1>2024-1</h1><div class="sub">한국예술종합학교 연극원 무대미술과 · 멀티미디어</div></div></header><main><div class="wrap"><h2>이송이</h2><div class="grid"><img loading="lazy" src="KakaoTalk_20240626_232132086.jpg" alt="KakaoTalk_20240626_232132086" data-full="KakaoTalk_20240626_232132086.jpg"><img loading="lazy" src="%EB%B9%8C%EB%94%A95%EA%B0%9C_ver1.jpg" alt="빌딩5개_ver1" data-full="%EB%B9%8C%EB%94%A95%EA%B0%9C_ver1.jpg"></div><h2>이예원</h2><div class="grid"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/IMG_0330.jpg" alt="IMG_0330" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/IMG_0330.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%2011f4-3668/IMG_0361.jpg" alt="IMG_0361" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%2011f4-3668/IMG_0361.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%201e1b-1f78/IMG_0251.jpg" alt="IMG_0251" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%201e1b-1f78/IMG_0251.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%202cfa-c2a2/IMG_1795.jpg" alt="IMG_1795" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%202cfa-c2a2/IMG_1795.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%203686-cd35/IMG_0701.jpg" alt="IMG_0701" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%203686-cd35/IMG_0701.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20379f-8c6b/IMG_0204.jpg" alt="IMG_0204" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20379f-8c6b/IMG_0204.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20408c-e18e/IMG_1008.jpg" alt="IMG_1008" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20408c-e18e/IMG_1008.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%204b78-d479/IMG_0844.jpg" alt="IMG_0844" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%204b78-d479/IMG_0844.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%205e43-744a/IMG_0715.jpg" alt="IMG_0715" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%205e43-744a/IMG_0715.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20603d-20be/IMG_0360.jpg" alt="IMG_0360" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20603d-20be/IMG_0360.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20609f-98e0/IMG_0561.jpg" alt="IMG_0561" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20609f-98e0/IMG_0561.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%206bc3-6918/IMG_0947.jpg" alt="IMG_0947" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%206bc3-6918/IMG_0947.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20782b-07ac/IMG_1853.jpg" alt="IMG_1853" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20782b-07ac/IMG_1853.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%209047-28c9/IMG_0984.jpg" alt="IMG_0984" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%209047-28c9/IMG_0984.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%209621-b48b/IMG_0305.jpg" alt="IMG_0305" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%209621-b48b/IMG_0305.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%209ae6-14ec/IMG_1796.jpg" alt="IMG_1796" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%209ae6-14ec/IMG_1796.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%209b6e-af99/IMG_0357.jpg" alt="IMG_0357" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%209b6e-af99/IMG_0357.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%209c04-ac51/IMG_0320.jpg" alt="IMG_0320" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%209c04-ac51/IMG_0320.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%209de0-df4e/IMG_0358.jpg" alt="IMG_0358" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%209de0-df4e/IMG_0358.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20a124-90a5/IMG_0716.jpg" alt="IMG_0716" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20a124-90a5/IMG_0716.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20a529-bd15/IMG_0252.jpg" alt="IMG_0252" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20a529-bd15/IMG_0252.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20aa46-890f/IMG_0730.jpg" alt="IMG_0730" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20aa46-890f/IMG_0730.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20bf92-704d/IMG_1498.jpg" alt="IMG_1498" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20bf92-704d/IMG_1498.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20c199-6952/IMG_1815.jpg" alt="IMG_1815" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20c199-6952/IMG_1815.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20c59f-c998/IMG_0698.jpg" alt="IMG_0698" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20c59f-c998/IMG_0698.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20c5e5-ac6b/IMG_1117.jpg" alt="IMG_1117" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20c5e5-ac6b/IMG_1117.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20cef5-e8e7/IMG_0339.jpg" alt="IMG_0339" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20cef5-e8e7/IMG_0339.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20d122-ae16/IMG_0257.jpg" alt="IMG_0257" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20d122-ae16/IMG_0257.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20d188-895a/IMG_0359.jpg" alt="IMG_0359" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20d188-895a/IMG_0359.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20d818-4fab/IMG_1118.jpg" alt="IMG_1118" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20d818-4fab/IMG_1118.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20dd9a-113e/IMG_0343.jpg" alt="IMG_0343" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20dd9a-113e/IMG_0343.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20ec98-2139/IMG_0944.jpg" alt="IMG_0944" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20ec98-2139/IMG_0944.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20f238-6309/IMG_0942.jpg" alt="IMG_0942" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20f238-6309/IMG_0942.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20f797-9f6a/IMG_0345.jpg" alt="IMG_0345" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20f797-9f6a/IMG_0345.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%ED%8E%98%EC%9D%B4%EC%A7%80%201/IMG_1793.jpg" alt="IMG_1793" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%ED%8E%98%EC%9D%B4%EC%A7%80%201/IMG_1793.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%ED%8E%98%EC%9D%B4%EC%A7%80%202/IMG_1794.jpg" alt="IMG_1794" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%ED%8E%98%EC%9D%B4%EC%A7%80%202/IMG_1794.jpg"><img loading="lazy" src="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%ED%8E%98%EC%9D%B4%EC%A7%80%203/IMG_1854.jpg" alt="IMG_1854" data-full="%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C/%ED%8E%98%EC%9D%B4%EC%A7%80%203/IMG_1854.jpg"></div></div></main>
 <footer><div class="wrap">노션 아카이브에서 생성 · 이미지 JPEG 장변 1600px / 영상 H.264 장변 1280px</div></footer>
 
 <dialog id="lb"><div id="lbbody"></div></dialog>
 <script>
-const lb=document.getElementById('lb'),body=document.getElementById('lbbody');
-document.querySelectorAll('[data-full]').forEach(el=>el.addEventListener('click',()=>{
-  const src=el.dataset.full, isVid=el.dataset.kind==='video';
-  body.innerHTML = isVid
-    ? '<video controls autoplay playsinline src="'+src+'"></video>'
-    : '<img src="'+src+'" alt="">';
-  lb.showModal();
-}));
-// 이미지 클릭 = 원래 폭으로 확대/축소, 바깥 클릭 = 닫기
+const lb=document.getElementById('lb'), body=document.getElementById('lbbody');
+const items=[...document.querySelectorAll('[data-full]')];
+let idx=0;
+
+function show(i){
+  idx=(i+items.length)%items.length;
+  const el=items[idx];
+  body.className='';
+  body.innerHTML = el.dataset.kind==='video'
+    ? '<video controls autoplay playsinline src="'+el.dataset.full+'"></video>'
+    : '<img src="'+el.dataset.full+'" alt="">';
+}
+items.forEach((el,i)=>el.addEventListener('click',()=>{ show(i); lb.showModal(); }));
+
+// 이미지 누르면 원래 폭으로 확대/축소, 빈 곳 누르면 닫기
 body.addEventListener('click',e=>{
-  if(e.target.tagName==='IMG'){ e.stopPropagation(); e.target.classList.toggle('zoom'); }
+  if(e.target.tagName==='IMG'){
+    e.stopPropagation();
+    e.target.classList.toggle('zoom');
+    body.classList.toggle('zoomed');
+  } else if(e.target===body){ lb.close(); }
 });
-lb.addEventListener('click',e=>{if(e.target===lb) lb.close()});
-lb.addEventListener('close',()=>{body.innerHTML=''});
+lb.addEventListener('click',e=>{ if(e.target===lb) lb.close(); });
+lb.addEventListener('close',()=>{ body.innerHTML=''; });
+
+// 위아래 스와이프로 앞뒤 이동 (확대 상태에선 스크롤이 우선)
+let y0=null;
+lb.addEventListener('touchstart',e=>{
+  y0 = body.querySelector('.zoom') ? null : e.touches[0].clientY;
+},{passive:true});
+lb.addEventListener('touchend',e=>{
+  if(y0===null) return;
+  const dy=e.changedTouches[0].clientY-y0; y0=null;
+  if(Math.abs(dy)>60) show(idx + (dy<0 ? 1 : -1));
+},{passive:true});
+
+// 키보드도 같은 방향으로
+addEventListener('keydown',e=>{
+  if(!lb.open) return;
+  if(e.key==='ArrowDown'||e.key==='ArrowRight') show(idx+1);
+  if(e.key==='ArrowUp'||e.key==='ArrowLeft') show(idx-1);
+});
 </script>
 </body></html>
